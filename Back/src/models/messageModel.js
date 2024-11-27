@@ -40,4 +40,4 @@ Message.belongsTo(Book, {foreignKey: 'book_id'});// muchos mensajes pertenece a 
 Message.belongsTo(User, {foreignKey: 'from_user_id'});// muchos mensajes pertenece a un usuario como from_user_id
 Message.belongsTo(User, {foreignKey: 'to_user_id'});// muchos mensajes pertenece a un usuario como to_user_id
 
-export default Exchange
+export default Message

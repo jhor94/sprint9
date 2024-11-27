@@ -41,7 +41,7 @@ export const addBook = async (req, res) => {
         return res.status(400).json({errors:errors.array()})
     }
     try {
-        const existingBook = await Book.findOne({ external_id_api: key});
+        const existingBook = await Book.findOne({ id_book: key});
 
         if(existingBook){
             return res.status(400).json({
@@ -49,14 +49,17 @@ export const addBook = async (req, res) => {
                 msg:'El libro ya existe en la base de datos'
             })
         }
+        const {external_id_api, user_id,title,author,isbn,number_of_pages,cover,publishers}= req.body
         const newBook = await Book.create({
-            external_id_api:Book.key,
-            title: Book.title,
-            author: Book.author,
-            cover: Book.cover,
-            publishers: Book.publishers,
-            isbn: Book.isbn,
-            number_of_pages: Book.number_of_pages
+            id_book: key,
+            external_id_api,
+            user_id,
+            title,
+            author,
+            isbn,
+            number_of_pages,
+            cover,
+            publishers,
         })
         res.status(200).json({
             code:1,
@@ -136,14 +139,7 @@ export const updateBook = async (req, res)=> {
         }
 
         const {id} = req.params
-        const {
-            external_id_api,
-            title,
-            author,
-            cover,
-            publishers,
-            isbn,
-            number_of_pages} = req.body
+        const {favorite} = req.body
     try {
         const book = await Book.findByPk(id)
         if(!book){
@@ -153,15 +149,7 @@ export const updateBook = async (req, res)=> {
             })
         }
 
-        await book.update({
-            external_id_api: book.external_id_api,
-            title:book.title,
-            author:book.author,
-            cover:book.cover,
-            publishers:book.publishers,
-            isbn:book.isbn,
-            number_of_pages:book.number_of_pages
-        })
+        await book.update({favorite})
         res.status(200).json({
             code: 1,
             msg:'Libro actualizado correctamente',
@@ -185,7 +173,7 @@ export const deleteBook = async (req, res) => {
         }
         const {id} = req.params
 
-        const deletedBook = await Book.destroy ({where : {book_id : id}})
+        const deletedBook = await Book.destroy ({where : {id_book : id}})
         if(!deletedBook){
             return res.status(404).json({
                 code:-100,
@@ -204,4 +192,5 @@ export const deleteBook = async (req, res) => {
         })
     }
 }
+
 

@@ -33,4 +33,4 @@ const Wishlist = sequelize.define('Wishlists',{
 Wishlist.belongsTo(User, {foreignKey: 'user_id'}); // Un libro en Wishlist pertenece a un usuario.
 Wishlist.belongsTo(Book, {foreignKey: 'book_id'}); // Un libro en Wishlist pertenece a un libro.
 
-export default Exchange
+export default Wishlist
