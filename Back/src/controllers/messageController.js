@@ -10,7 +10,9 @@ export const addMessage = async (req, res) => {
         return res.status(400).json({errors:errors.array()})
     }
     try {
-        const existingMessage = await Message.findOne({ id_message: key});
+        const {book_id, from_user_id, to_user_id, message} = req.body
+        const existingMessage = await Message.findOne({ 
+            where: { book_id}});
 
         if(existingMessage){
             return res.status(400).json({
@@ -18,7 +20,7 @@ export const addMessage = async (req, res) => {
                 msg:'El mensaje ya existe en la base de datos'
             })
         }
-        const {book_id, from_user_id, to_user_id, message} = req.body
+
         const newMessage = await Message.create({
             book_id,
             from_user_id,

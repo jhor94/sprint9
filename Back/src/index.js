@@ -23,7 +23,7 @@ app.use(express.json());
 app.use('/books', bookRoutes)
 app.use('/exchanges', exchangeRoutes)
 app.use('/messages', messageRoutes)
-app.use('/wishlist', wishlistRoutes)
+app.use('/wishlists', wishlistRoutes)
 app.use('/users', userRoutes)
 
 app.listen('3000', () => {

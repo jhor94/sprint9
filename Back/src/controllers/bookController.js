@@ -41,7 +41,10 @@ export const addBook = async (req, res) => {
         return res.status(400).json({errors:errors.array()})
     }
     try {
-        const existingBook = await Book.findOne({ id_book: key});
+        const {external_id_api, user_id,title,author,isbn,number_of_pages,cover,publishers}= req.body
+        const existingBook = await Book.findOne({ 
+            where: {external_id_api: external_id_api}
+        });
 
         if(existingBook){
             return res.status(400).json({
@@ -49,9 +52,8 @@ export const addBook = async (req, res) => {
                 msg:'El libro ya existe en la base de datos'
             })
         }
-        const {external_id_api, user_id,title,author,isbn,number_of_pages,cover,publishers}= req.body
+    
         const newBook = await Book.create({
-            id_book: key,
             external_id_api,
             user_id,
             title,

@@ -23,6 +23,17 @@ const User = sequelize.define('Users',{
     roles: {
         type: DataTypes.STRING(30),
         allowNull: false,
+        get(){
+            const rawValue = this.getDataValue('roles');
+            if(!rawValue){
+                console.log("valos role nulo o undefined");
+                return []
+            }
+            return rawValue.split(',')
+        },
+        set(value){
+            this.setDataValue('roles', value.join(','))
+        }
     },
     photo: {
         type: DataTypes.STRING(30),

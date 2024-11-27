@@ -10,7 +10,13 @@ export const addWishlist = async (req, res) => {
         return res.status(400).json({errors:errors.array()})
     }
     try {
-        const existingWishlist = await Wishlist.findOne({ id_wishlist: key});
+        const {user_id, book_id, added_at} = req.body
+        const existingWishlist = await Wishlist.findOne({ 
+            where: {
+                user_id: user_id,
+                book_id: book_id
+            }
+        });
 
         if(existingWishlist){
             return res.status(400).json({
@@ -18,7 +24,7 @@ export const addWishlist = async (req, res) => {
                 msg:'La wishlist ya existe en la base de datos'
             })
         }
-        const {user_id, book_id, added_at} = req.body
+
         const newWishlist = await Wishlist.create({
             user_id,
             book_id,
@@ -106,8 +112,8 @@ export const deleteBookWishlist = async (req, res)=> {
    
         const wishlist = await Wishlist.findOne({
             where:{
-                user_id: id,// id del usuario que tiene la lista
-                book_id: book_id // libro que se desea eleminar
+                user_id: id,// id del usuario que tiene la lista es el id que ponemos en la url
+                book_id: book_id // libro que se desea eleminar es el id que se elimina para que se asocie en la tabla
             }
         })
         if(!wishlist){
