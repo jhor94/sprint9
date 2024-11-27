@@ -4,7 +4,7 @@ import User from "./userModel.js";
 
 
 const Book = sequelize.define('Books',{
-    book_id: {//nada
+    id_book: {//nada
         type: DataTypes.INTEGER(8).UNSIGNED,
         primaryKey: true,
         autoIncrement: true,

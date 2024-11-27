@@ -1,5 +1,6 @@
 //imports
 import express from 'express';
+import cors from 'cors'
 import dotenv from 'dotenv';
 import { testConnection } from './db.js';
 import bookRoutes from './routes/bookRoutes.js'
@@ -7,7 +8,10 @@ import userRoutes from './routes/userRoutes.js'
 dotenv.config()
 
 const app = express();
-
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:4200'
+  }));
 
 await testConnection();
 
