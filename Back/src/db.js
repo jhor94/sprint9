@@ -13,6 +13,10 @@ const sequelize = new Sequelize (
     }
 );
 
+const jwt = {
+    secret: process.env.SECRET_KEY,
+}
+
 const syncroModel = async () =>{
     try{
     await sequelize.sync({ force: false }).then(() => {

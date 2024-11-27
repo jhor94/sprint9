@@ -3,7 +3,7 @@ import { sequelize } from "../db.js";
 import User from "./userModel.js";
 
 
-const Token = sequelize.define('RecoveryToken',{
+const RecoveryToken = sequelize.define('RecoveryToken',{
     token: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -27,4 +27,4 @@ User.hasMany(RecoveryToken, { foreignKey: 'user_id' });
 //un token pertenece a un usuario
 RecoveryToken.belongsTo(User, { foreignKey: 'user_id' });
 
-export default Token;
+export default RecoveryToken;

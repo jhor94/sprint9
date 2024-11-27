@@ -5,25 +5,25 @@ import User from "./userModel.js";
 
 
 const Exchange = sequelize.define('Exchanges',{
-    id_exchange: {//nada
+    id_exchange: {
         type: DataTypes.INTEGER(8).UNSIGNED,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
-    book_id:{ //search
+    book_id:{ 
         type: DataTypes.INTEGER(8).UNSIGNED,
         allowNull: false
     },
-    requested_book_id:{//nada
+    requested_book_id:{
         type:DataTypes.INTEGER(8).UNSIGNED,
         allowNull: false
     },
-    from_user_id:{//nada
+    from_user_id:{
         type:DataTypes.INTEGER(8).UNSIGNED,
         allowNull: false
     },
-    to_user_id:{//nada
+    to_user_id:{
         type:DataTypes.INTEGER(8).UNSIGNED,
         allowNull: false
     },
