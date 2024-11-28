@@ -3,7 +3,7 @@ import { sequelize } from "../db.js";
 import User from "./userModel.js";
 
 
-const RecoveryToken = sequelize.define('RecoveryToken',{
+const RecoveryToken = sequelize.define('RecoveryTokens',{
     token: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -15,8 +15,8 @@ const RecoveryToken = sequelize.define('RecoveryToken',{
     },
     created_at:{
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
         allowNull: false,
-        defaultValue: DataTypes.NOW
     }
 },
 { 

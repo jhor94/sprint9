@@ -21,8 +21,22 @@ export const authenticateToken = (allowedRoles) => async (req,res,next) => {
                 msg:'Token no valido para acceso'
             })
         }
+
+        const hasPermission = user.roles.some(role => allowedRoles.includes(role));
+        if(!hasPermission){
+            return res.status(403).json({
+                code: -10,
+                msg:'No tiene permisos necesarios'
+            })
+        }
+
+        req.user = user;
+        next();
     } catch (error) {
-        
+        res.status(500).json({
+            code: -100,
+            msg: 'Error al verificar token'
+        })
     }
 
 }

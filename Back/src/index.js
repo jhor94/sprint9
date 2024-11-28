@@ -2,13 +2,14 @@
 import express from 'express';
 import cors from 'cors'
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser'
 import { testConnection } from './db.js';
 import bookRoutes from './routes/bookRoutes.js'
 import exchangeRoutes from './routes/exchangeRoutes.js'
 import messageRoutes from './routes/messageRoutes.js'
 import wishlistRoutes from './routes/wishlistRoutes.js'
 import userRoutes from './routes/userRoutes.js'
-import rolesRoutes from './routes/rolesRoutes.js'
+/*import rolesRoutes from './routes/rolesRoutes.js'*/
 import authRoutes from './routes/authRoutes.js'
 dotenv.config()
 
@@ -17,6 +18,8 @@ app.use(cors({
     credentials: true,
     origin: 'http://localhost:4200'
   }));
+
+app.use(cookieParser())
 
 await testConnection();
 
@@ -27,10 +30,11 @@ app.use('/exchanges', exchangeRoutes)
 app.use('/messages', messageRoutes)
 app.use('/wishlists', wishlistRoutes)
 app.use('/users', userRoutes)
-app.use('/roles', rolesRoutes)
+/*app.use('/roles', rolesRoutes)*/
 app.use('/auth', authRoutes)
 
 app.listen('3000', () => {
     console.log("Servidor funcionando en el puerto 3000");
 })
+console.log("el tokey key es: ",process.env.SECRET_KEY)
 
