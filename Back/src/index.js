@@ -9,7 +9,7 @@ import exchangeRoutes from './routes/exchangeRoutes.js'
 import messageRoutes from './routes/messageRoutes.js'
 import wishlistRoutes from './routes/wishlistRoutes.js'
 import userRoutes from './routes/userRoutes.js'
-/*import rolesRoutes from './routes/rolesRoutes.js'*/
+import rolesRoutes from './routes/rolesRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 dotenv.config()
 
@@ -24,17 +24,18 @@ app.use(cookieParser())
 await testConnection();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 //ruteo
 app.use('/books', bookRoutes)
 app.use('/exchanges', exchangeRoutes)
 app.use('/messages', messageRoutes)
 app.use('/wishlists', wishlistRoutes)
 app.use('/users', userRoutes)
-/*app.use('/roles', rolesRoutes)*/
+app.use('/roles', rolesRoutes)
 app.use('/auth', authRoutes)
 
 app.listen('3000', () => {
     console.log("Servidor funcionando en el puerto 3000");
 })
-console.log("el tokey key es: ",process.env.SECRET_KEY)
+
 

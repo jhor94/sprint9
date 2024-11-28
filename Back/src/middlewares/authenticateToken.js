@@ -14,7 +14,9 @@ export const authenticateToken = (allowedRoles) => async (req,res,next) => {
         }
 
         const decodedToken = jwt.verify(accessToken, process.env.SECRET_KEY)//se verifica la clave secreta que es está en env con jwt
-        const user = await User.findById(decodedToken.id_user)//se busca el usuario en la base de datos
+        console.log(decodedToken.id_user)
+        const user = await User.findByPk(decodedToken.id_user)//se busca el usuario en la base de datos
+       
         if(!user){
             return res.status(401).json({
                 code: -70,

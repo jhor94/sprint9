@@ -6,6 +6,7 @@ import crypto from 'crypto'
 import dotenv from 'dotenv'
 import { serialize } from 'cookie'
 import RecoveryToken from '../models/recoverytokenModel.js'
+import sendEmail from '../utils/email/sendEmail.js'
 
 dotenv.config();
 
@@ -134,7 +135,7 @@ export const forgotPassword = async (req, res)=> {
         const user = await User.findOne({
             where: {email}
         });
-        if(user){
+        if(!user){
             return res.status(400).json({
                 code:-8,
                 msg: 'El email NO existe'
@@ -157,7 +158,7 @@ export const forgotPassword = async (req, res)=> {
                 name:user.name,
                 url:url
             },
-            "email/template/requestResetPassword.handlebars" // aqui puede ir el template de utils con la redireccion de la password
+            "email/template/templateResetPassword.handlebars" // aqui puede ir el template de utils con la redireccion de la password
         ).then(response=>{
             console.log("Resultado del envio del correo: ", response)
             res.status(200).json({
@@ -192,12 +193,13 @@ export const changePassword = async (req, res) =>{
         if(!errors.isEmpty()){
             return res.status(400).json({ errors: errors.array()})
         }
-        console.log("este es el req.body",req.body)
+        //console.log("este es el req.body",req.body)
         const {token, password} = req.body;
         console.log(token)
         let token_now = await RecoveryToken.findOne({
             where:{ token }
         })
+        //console.log("TOKEN encontrado en la db: ", token_now)
         if(!token_now){
             return res.status(400).json({
                 code:-3,
@@ -228,7 +230,7 @@ export const changePassword = async (req, res) =>{
         })
 
         //generar un token de acceso cuando se cambia la password
-        const accessToken = jwt.sign({id_user:user.id_user, name: user.name} ,saltRounds)
+        const accessToken = jwt.sign({id_user:user.id_user, name: user.name} ,process.env.SECRET_KEY)
         const token_jwt = serialize('token', accessToken,{
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
