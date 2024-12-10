@@ -1,0 +1,101 @@
+.form-overlay {
+    align-items: center;
+    min-width: fit-content;
+    z-index: 0;
+    text-align: center;
+    font-family: "Space Grotesk", sans-serif;
+    color: rgb(26,99,99);
+    font-weight: bold;
+}
+.form-overlay input {
+    margin: 10px;
+    width: 70%;
+    border: 1px solid #7BB28A;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+.form-overlay h2 {
+    font-size: 40px;
+    color: rgba(13,13,13);
+}
+
+.card {
+    font-family: "Space Grotesk", sans-serif;
+    margin: 10px;
+    flex: 0 0 auto;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
+}
+
+.card-body{
+    text-align: center;
+    font-family: "Space Grotesk", sans-serif;
+    margin-top: 20px;
+    color: rgb(13,13,13);
+    flex: 1;
+}
+
+.btn{
+    background-color: #7BB28A;
+    color: white;
+    border-color: #7BB28A;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 10px 15px;
+    font-size: 18px;
+    white-space: nowrap;
+    margin-top: 10px;
+    margin: 2px;
+}
+.btn:hover {
+   background-color: rgb(13,13,13); 
+   border-color: rgb(13,13,13);
+}
+
+#cards-container{
+    overflow-x: auto;
+    max-height: 200vh;
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.card-img{
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+    margin:20px;
+}
+
+.vectorbusqueda{
+    width: 60%;
+    height: auto;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+//pendiente de hacer flechas direccionales en las cards de resultados
