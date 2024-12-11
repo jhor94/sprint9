@@ -1,38 +1,4 @@
-<!--<div class="container">
-    <div class="row">
-        <div id="" class="col-md-6 d-flex align-items-center text-center justify-content-center">
-            <div id="busqueda">
-                <form action="" [formGroup]="searchForm" class="form-overlay">
-                    <h2 class="d-flex">Descubre los libros de nuestra comunidad</h2>
-                    <input placeholder="Busca por título, Autor o ISBN" type="text" formControlName="searchQuery">
-                    <button class="btn" (click)="searchBooks()"><i class="bi bi-search m-1"></i>Buscar</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-6 mapa">
-            <div id="cards-container">
-                @for(book of BookListSearch;track book.id){
-                <div class="card">
-                    <img [src]="book.imgUrl" class="img-fluid rounded-start h-100" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title">{{book.title}}</h5>
-                        <p class="card-text">{{book.external_id_api}}</p>
-                        <p class="card-text">Autor/a: {{book.author}}</p>
-                        <p class="card-text">Código ISBN: {{book.isbn}}</p>
-                        <p class="card-text">Nº de páginas: {{book.number_of_pages}}</p>
-                        <p class="card-text"><small>Editorial: {{book.publishers}}</small></p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-                }
-            </div>
-        </div>
-    </div>
-</div>-->
-
-<div class="container-fluid d-flex justify-content-center ">
+<div class="container mt-3">
     <div class="row">
         <div class="col-12 mb-4">
             <div class="row">
@@ -45,176 +11,75 @@
                         <button class="btn" (click)="searchBooks()"><i class="bi bi-search m-1"></i>Buscar</button>
                     </form>
                 </div>
-            </div>     
-        </div>
-        <div class="col-12 ">
-            <div class="masonry-grid">
-                @for(book of BookListSearch;track book.id){
-                   <div class="card">
-                       <img [src]="book.imgUrl" class="img-fluid rounded-start h-100" alt="portada">
-                       <div class="card-body">
-                           <h5 class="card-title">{{book.title}}</h5>
-                           <p class="card-text">{{book.external_id_api}}</p>
-                           <p class="card-text">Autor/a: {{book.author}}</p>
-                           <p class="card-text">Código ISBN: {{book.isbn}}</p>
-                           <p class="card-text">Nº de páginas: {{book.number_of_pages}}</p>
-                           <p class="card-text"><small>Editorial: {{book.publishers}}</small></p>
-                           <p class="card-text">Categoría literaria: </p>
-                           <button class="btn">Ver propietarios</button>
-                           <button class="btn"> <i class="bi bi-heart"></i></button>
-                       </div>
-                   </div>
-               }
-               <!-- <div class="card">
-                    <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text">Autor/a: </p>
-                        <p class="card-text">Código ISBN: </p>
-                        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero tempore
-                            exercitationem debitis unde laborum explicabo quod, modi blanditiis cupiditate enim sed
-                            quis, rem praesentium, similique aliquam ex quasi eligendi animi? Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Aut modi eum accusamus ut voluptatibus dolores sint, atque
-                            molestiae suscipit pariatur? Nesciunt ex voluptates consectetur, reiciendis obcaecati
-                            facilis neque fugit et!</p>
-                        <p class="card-text">Editorial: </p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/buscar.png" class="card-img rounded-start" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text">Autor/a: </p>
-                        <p class="card-text">Código ISBN: </p>
-                        <p class="card-text">Nº de páginas:Loremjssjdskshfksjjfnsjd </p>
-                        <p class="card-text">Editorial: </p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text">Autor/a: </p>
-                        <p class="card-text">Código ISBN: </p>
-                        <p class="card-text">Nº de páginas:Loremjssjdskshfksjjfnsjd </p>
-                        <p class="card-text">Editorial: </p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text">Autor/a: </p>
-                        <p class="card-text">Código ISBN: </p>
-                        <p class="card-text">Nº de páginas:Loremjssjdskshfksjjfnsjd </p>
-                        <p class="card-text">Editorial: </p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text">Autor/a: </p>
-                        <p class="card-text">Código ISBN: </p>
-                        <p class="card-text">Nº de páginas:Loremjssjdskshfksjjfnsjd </p>
-                        <p class="card-text">Editorial: </p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text">Autor/a: </p>
-                        <p class="card-text">Código ISBN: </p>
-                        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero tempore
-                            exercitationem debitis unde laborum explicabo quod, modi blanditiis cupiditate enim sed
-                            quis, rem praesentium, similique aliquam ex quasi eligendi animi? Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Aut modi eum accusamus ut voluptatibus dolores sint, atque
-                            molestiae suscipit pariatur? Nesciunt ex voluptates consectetur, reiciendis obcaecati
-                            facilis neque fugit et!</p>
-                        <p class="card-text">Editorial: </p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text">Autor/a: </p>
-                        <p class="card-text">Código ISBN: </p>
-                        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero tempore
-                            exercitationem debitis unde laborum explicabo quod, modi blanditiis cupiditate enim sed
-                            quis, rem praesentium, similique aliquam ex quasi eligendi animi? Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Aut modi eum accusamus ut voluptatibus dolores sint, atque
-                            molestiae suscipit pariatur? Nesciunt ex voluptates consectetur, reiciendis obcaecati
-                            facilis neque fugit et!</p>
-                        <p class="card-text">Editorial: </p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text">Autor/a: </p>
-                        <p class="card-text">Código ISBN: </p>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-                            impedit, ipsam iste, eaque, fugit odio similique officia minima assumenda ducimus quas
-                            quidem quibusdam odit! Doloremque accusantium sapiente quod maiores fuga!jjfnsjd </p>
-                        <p class="card-text">Editorial: </p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text">Autor/a: </p>
-                        <p class="card-text">Código ISBN: </p>
-                        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero tempore
-                            exercitationem debitis unde laborum explicabo quod, modi blanditiis cupiditate enim sed
-                            quis, rem praesentium, similique aliquam ex quasi eligendi animi? Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Aut modi eum accusamus ut voluptatibus dolores sint, atque
-                            molestiae suscipit pariatur? Nesciunt ex voluptates consectetur, reiciendis obcaecati
-                            facilis neque fugit et!</p>
-                        <p class="card-text">Editorial: </p>
-                        <p class="card-text">Categoría literaria: </p>
-                        <button class="btn">Ver propietarios</button>
-                        <button class="btn"> <i class="bi bi-heart"></i></button>
-                    </div>
-                </div>-->
-
             </div>
         </div>
     </div>
+    <div class="container m-3">
+        <div class="row d-flex justify-content-center">
+            <ul class="col-12 ">
+             @for(book of BookListSearch;track book.id){
+                <li class="book row mb-4">
+                 
+                    <div class="col-12 col-sm-12 col-md-9">
+                        <div class="row">
+                            <div class="col-4 col-sm-3 col-md-3 col-lg-3 book-img">
+                                <img [src]="book.imgUrl" class="img-fluid  card-img rounded-start h-100" alt="portada">
+                            </div>
+                            <div class="col-8 col-sm-9 col-md-9 col-lg-9">
+                                <h5 class="card-title">{{book.title}}</h5>
+                                <h2 class="card-text">{{book.external_id_api}}</h2>
+                                <h3 class="card-text">Autor/a: {{book.author}}</h3>
+                                <h3 class="card-text">Código ISBN: {{book.isbn}}</h3>
+                                <h3 class="card-text">Nº de páginas: {{book.number_of_pages}}</h3>
+                                <h4 class="card-text"><small>Editorial: {{book.publishers}}</small></h4>
+                                <h4 class="card-text">Categoría literaria: </h4>
+                                <button class="btn btn-favorito "> <i class="bi bi-heart-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 book-action d-flex flex-column align-items-center justify-content-between">
+                        <div class="d-flex justify-content-end flex-column gap-2">
+                            <h2 class="d-flex">Puesdes marcar como favorito el libro que te gusta o cambiarlo por puntos P-Book</h2>
+                            <h3 class="d-flex">Coste P-book: 350 Puntos </h3>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <button class="btn d-flex justify-content-center text-center">Ver propietarios</button>
+                            <button class="btn d-flex mb-3 ">Ver puntos P-book </button>
+                            
+                        </div>
+                    </div>
+                <!--  <div class="col-12 col-sm-12 col-md-9">
+                    <div class="row">
+                        <div class="col-4 col-sm-3 col-md-3 col-lg-3 book-img">
+                            <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada"> 
+                        </div>
+                        <div class="col-8 col-sm-9 col-md-9 col-lg-9 mb-2">
+                        <h2 class="card-title">Titulo del libro</h2>
+                        <h3 class="card-text"></h3>
+                        <h3 class="card-text">Autor/a: </h3>
+                        <h3 class="card-text">Código ISBN: </h3>
+                        <h3 class="card-text">Editorial: </h3>
+                        <h4 class="card-text">Categoría literaria: </h4>
+                        <button class="btn btn-favorito "> <i class="bi bi-heart-fill"></i></button> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 book-action d-flex flex-column align-items-center justify-content-between">
+                    <div class="d-flex justify-content-end flex-column gap-2">
+                        <h2 class="text-center ">Puesdes marcar como favorito o cambiar por puntos p-book</h2> 
+                           
+                    </div>
+                    
+                    <div class="d-flex d-flex  flex-column">
+                        <button class="btn d-flex justify-content-center text-center">Ver propietarios</button>
+                        <button class="btn d-flex mb-3 ">Ver puntos P-book </button>
+                    </div>
+                    
+                </div>-->
+                </li>
+            }
+            </ul>
+        </div>
+    </div>
+
 </div>
