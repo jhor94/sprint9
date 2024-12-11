@@ -3,7 +3,7 @@
 @use 'bootstrap' as *; 
 
 
-footer{
+/*footer{
     position:fixed;
     bottom: 0px;
     width: 100%;
@@ -13,6 +13,6 @@ footer{
     height: 5%;
     font-family: "Space Grotesk", sans-serif;
 
-}
+}*/
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: "Space Grotesk", sans-serif; }

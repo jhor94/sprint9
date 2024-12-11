@@ -1,43 +1,59 @@
+.container-fluid{
+    overflow: auto;
+}
+
 .form-overlay {
     z-index: 0;
     font-family: "Space Grotesk", sans-serif;
     color: rgb(26,99,99);
     font-weight: bold;
+    display: flex;
+    margin-top: 20px;
 }
 .form-overlay input {
-    width: 70%;
-    border: 1px solid #7BB28A;
+    width: 100%;
+    border: 1px solid #5fad64;
     border-radius: 5px;
     text-align: center;
+    margin: 2px;
 }
 
 
-.form-overlay h2 {
-    font-size: 40px;
+h2 {
+    font-size: 30px;
     color: rgba(13,13,13);
+    justify-content: justify;
+    font-family: "Space Grotesk", sans-serif;
+    padding: 0;
+    width: 100%;
+    display: flex;
 }
 
-.card {
-    font-family: "Space Grotesk", sans-serif;
-    margin: 20px;
-    flex: 0 0 auto;
-    width: 100px;
-    height: auto;
+.masonry-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(400px,2fr));
+    gap: 10px;
+}
+
+.card{
+    width: auto;
+    height: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid beige;
+    font-family: "Space Grotesk", sans-serif;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    max-width: 100%;
     background-color: white;
-    min-width: 400px;
-    border-bottom: 3px solid #7BB28A;
-    border-top: 3px solid #7BB28A;
-    border-left: 3px solid #7BB28A;
-    border-right: 3px solid #7BB28A;
+    border-bottom: 3px solid #5fad64;
+    border-top: 3px solid #5fad64;
+    border-left: 3px solid #5fad64;
+    border-right: 3px solid #5fad64;
+    grid-row: span calc(var(--card-height) / 10); /* Altura dinámica */
+    overflow: hidden;
 }
 .card-text{
-    min-height: fit-content;
-    max-height: 400px;
     font-size: 14px;
 }
 
@@ -47,20 +63,22 @@
 }
 
 .card-body{
-    font-family: "Space Grotesk", sans-serif;
+   font-family: "Space Grotesk", sans-serif;
     color: rgb(13,13,13);
     flex: 1;
-    min-width: fit-content;
     width: 100%;
     margin-top: 5px;
     text-align: left;
+    background-color: #e1f4e6;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 
 }
 
 .btn{
-    background-color: #7BB28A;
+    background-color: #5fad64;
     color: white;
-    border-color: #7BB28A;
+    border-color: #5fad64;
     text-align: center;
     justify-content: center;
     justify-items: center;
@@ -71,13 +89,14 @@
     white-space: nowrap;
     margin-top: 10px;
     margin: 2px;
+    min-width: fit-content;
 }
 .btn:hover {
    background-color: rgb(13,13,13); 
    border-color: rgb(13,13,13);
 }
 
-#cards-container{
+/*#cards-container{
     overflow-y: auto;
     max-height: 50vh;
     margin-top: 10px;
@@ -85,11 +104,12 @@
     text-align: center;
     align-items: center;
     max-width: fit-content;
-}
+}*/
 
 .card-img{
-    object-fit: cover;
-    height: 100%;
+    object-fit: contain;
+    width: 100%;
+    height: auto;
 }
 
 

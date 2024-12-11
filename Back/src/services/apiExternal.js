@@ -1,6 +1,6 @@
 
 const loadApilibrary = async(search) => {
-    const endpoint = `http://openlibrary.org/search.json?q=${search}&fields=key,title,author_name,editions,cover_edition_key,subject&limit=10`
+    const endpoint = `http://openlibrary.org/search.json?q=${search}&fields=key,title,author_name,editions,cover_edition_key,subject&limit=7`
     
     try {
         console.log("este es el enpoint",endpoint)

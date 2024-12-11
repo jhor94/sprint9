@@ -1,46 +1,40 @@
-.jumbotron{
- width: 100%;
- display: flex;
- height: 70vh
-}
 .container{
-    padding: 0;
-    margin: 0;
+    overflow: auto;
+
+
+
 }
 
-.row{
-    padding: 0;
-    margin: 0;
-}
 
 .card{
-    height: 70vh;
+    height: 60vh;
     width: 100%;
     display: flex;
-    border: none;
-}
 
-.card img{
-    margin-top: 100px;
 }
 
 
 .card-body{
+    padding-top: 50px;
     text-align: center;
     font-family: "Space Grotesk", sans-serif;
-    margin-top: 20px;
     color: rgb(13,13,13);
+    margin-top: 100px;
+    width: 100%;
+    height: 500px
 }
 
-.card-text {
-    font-size: 18px;
+.card-text-banner {
+    font-size: 25px;
     font-weight: bold;
+    width: 100%;
+
 }
 
 .btn{
-    background-color: #7BB28A;
-    color: white;
-    border-color: #7BB28A;
+    background-color: #5fad64;
+    color: rgb(255, 255, 255);
+    border-color: #5fad64;
     text-align: center;
     justify-content: center;
     justify-items: center;
@@ -49,7 +43,7 @@
     padding: 10px 15px;
     font-size: 18px;
     white-space: nowrap;
-    margin-top: 10px
+    font-weight: bold;
 }
 .btn:hover {
    background-color: rgb(13,13,13); 
@@ -61,6 +55,91 @@
     position: relative;
     width: 100%;
     background-size: cover;
-    height: 70vh;
+    height: 50vh;
+    padding: 0;
+    margin: 0;
 }
+
+@media screen and (max-width: 800px) {
+    #banner-foto {
+        display: none;
+
+    }
+}
+.card-group {
+    overflow-y: auto;
+    cursor: pointer;
+    float: left;
+    padding: 20px;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté por encima del círculo */
+    color: rgb(0, 0, 0); /* Color del texto */
+    text-align: center;
+    padding-top: 20px;
+}
+
+.card-recomendado{ //card
+    background-color: #ffffff;
+    padding: 20px;
+    border-bottom: 3px solid rgb(220, 213, 213);
+    border-right: 3px solid rgb(220, 213, 213);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+
+}
+.card-recomendado:hover {
+    transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
+}
+
+.img-recomendado{ //card-img
+    object-fit: contain;
+    width: 100%;
+    height: 300px;
+
+}
+
+.card-body-recomendado{ //card-body
+    margin: 5px;
+    padding: 5px;
+    border-top: 3px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+ }
+
+ .btn-recomendado{
+    background-color: #5fad64;
+       color: white;
+       border-color: #5fad64;
+       text-align: center;
+       justify-content: center;
+       justify-items: center;
+       cursor: pointer;
+       transition: background-color 0.3s ease;
+       padding: 10px 15px;
+       font-size: 18px;
+       white-space: nowrap;
+ }
+
+ #favoritos{
+  background-color: #5fad64;
+    padding-top: 10px;
+    background: linear-gradient(5deg, #5fad64 30%, transparent 10%)  0,
+              linear-gradient(-5deg, #5fad64 30%, transparent 10%)  0,
+
+
+    
+ }
+ #favoritos h2{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+ }
+
 

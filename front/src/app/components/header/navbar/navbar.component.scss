@@ -1,5 +1,6 @@
 .navbar{
     font-family: "Space Grotesk", sans-serif;
+    border-bottom: 1px solid #5fad64;
   }
     
 .navbar-toggler {
@@ -45,7 +46,7 @@ img{
 }
 
 .nav-link:hover {
-      color: #7BB28A; 
+      color: #5fad64; 
 }
 
 .btn{
@@ -62,8 +63,8 @@ img{
        white-space: nowrap
 }
 .btn:hover {
-      background-color: #7BB28A; 
-      border-color: #7BB28A;
+      background-color: #5fad64; 
+      border-color: #5fad64;
 }
 
 .modal{
