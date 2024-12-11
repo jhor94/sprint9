@@ -4,12 +4,14 @@ import { BooklistComponent } from './components/booklist/booklist/booklist.compo
 import { ResultBooksComponent } from './components/resultBooks/result-books/result-books.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { RegisterComponent } from './components/register/register/register.component';
+import { UserprofileComponent } from './components/userprofile/userprofile/userprofile.component';
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
     {path: 'books', component: ResultBooksComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
+    {path:'areasocio', component: UserprofileComponent},
    /* {path: 'book/:id', component: BooklistComponent, /*canActivate:[accesoGuard]},*/
 
     {path:'***', redirectTo: '', pathMatch:'full'}

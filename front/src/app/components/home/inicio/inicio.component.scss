@@ -32,9 +32,9 @@
 }
 
 .btn{
-    background-color: #5fad64;
+    background-color: rgb(13,13,13);
     color: rgb(255, 255, 255);
-    border-color: #5fad64;
+    border-color: rgb(13,13,13);
     text-align: center;
     justify-content: center;
     justify-items: center;
@@ -46,8 +46,8 @@
     font-weight: bold;
 }
 .btn:hover {
-   background-color: rgb(13,13,13); 
-   border-color: rgb(13,13,13);
+   background-color: #5fad64; 
+   border-color: #5fad64;
 }
 
 #banner-foto{
@@ -124,14 +124,17 @@
        white-space: nowrap;
  }
 
+ .btn-recomendado:hover {
+    background-color:  rgb(13, 13, 13); 
+    border-color: rgb(13, 13, 13);
+ }
+
  #favoritos{
   background-color: #5fad64;
     padding-top: 10px;
     background: linear-gradient(5deg, #5fad64 40%, transparent 10%) -50% 0,
               linear-gradient(-5deg, #5fad64 40%, transparent 10%)  -50% 0,
 
-
-    
  }
  #favoritos h2{
     text-align: center;
@@ -141,5 +144,6 @@
     color: rgb(0, 0, 0);
     font-weight: bold;
  }
+
 
 
