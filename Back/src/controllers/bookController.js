@@ -16,7 +16,8 @@ export const fetchsaveBooks = async(req,res) => {
                 cover: book.cover,
                 publishers: book.publishers,
                 isbn: book.isbn,
-                number_of_pages: book.number_of_pages
+                number_of_pages: book.number_of_pages,
+                subject:book.subject
             }
         })
        res.status(200).json({
@@ -41,7 +42,7 @@ export const addBook = async (req, res) => {
         return res.status(400).json({errors:errors.array()})
     }
     try {
-        const {external_id_api, user_id,title,author,isbn,number_of_pages,cover,publishers}= req.body
+        const {external_id_api, user_id,title,author,isbn,number_of_pages,cover,publishers,subject}= req.body
         const existingBook = await Book.findOne({ 
             where: {external_id_api: external_id_api}
         });
@@ -62,6 +63,7 @@ export const addBook = async (req, res) => {
             number_of_pages,
             cover,
             publishers,
+            subject,
         })
         res.status(200).json({
             code:1,

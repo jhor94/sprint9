@@ -8,5 +8,7 @@ export interface Book {
     number_of_pages: number,
     cover: string,
     publishers: string,
+    subject:string,
     favoite: boolean,
+    imgUrl:string,
 }

@@ -1,6 +1,6 @@
 
 const loadApilibrary = async(search) => {
-    const endpoint = `http://openlibrary.org/search.json?q=${search}&fields=key,title,author_name,editions,cover_edition_key`
+    const endpoint = `http://openlibrary.org/search.json?q=${search}&fields=key,title,author_name,editions,cover_edition_key,subject&limit=10`
     
     try {
         console.log("este es el enpoint",endpoint)
@@ -19,6 +19,7 @@ const loadApilibrary = async(search) => {
             author:Array.isArray(book.author_name) ? book.author_name.join(", "): book.author_name,
             editions:book.editions?.docs || [], //books
             cover:book.cover_edition_key,
+            subject:Array.isArray(book.subject) ? book.subject.join(", "): book.subject
         }))
         console.log('libros conseguidos', books)
 
@@ -42,6 +43,8 @@ const loadApilibrary = async(search) => {
                             // Concatenamos isbn_10 e isbn_13, separándolos por una coma si ambos existen
                             book.isbn = `${isbn10 ? isbn10 : ''}${(isbn10 && isbn13) ? ', ' : ''}${isbn13 ? isbn13 : ''}`;
                             book.publishers = editionDetails.publishers ? editionDetails.publishers.join(", "): ''
+                            const subject =  editionDetails.subject ? editionDetails.subject.join(", "): '';
+                            book.subject = subject
 
                         } catch (error) {
                             console.log(`error al cargar los detalles`,error)

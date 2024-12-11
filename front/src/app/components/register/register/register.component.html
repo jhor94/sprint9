@@ -1,0 +1,53 @@
+<div class="row text-center">
+    <h2> Registrate gratis</h2>
+  </div>
+  <div class="card-container text-center justify-content-center align-items-center">
+    <div class="row">
+        <mat-card class="col-lg-6">
+            <mat-card-content >
+              <form [formGroup]="formRegister" class="form-custom">
+                <mat-form-field class="input-custom">
+                  <mat-label>Name: </mat-label>
+                  <input matInput placeholder="" formControlName="name">
+                  @if(this.formRegister.controls['name'].errors?.['required'] && this.submitted && this.formRegister.controls['name'].touched){
+                    <span class="error-message" >El nombre es obligatorio</span>
+                  }
+                  <br>
+                </mat-form-field>
+                <mat-form-field class="input-custom">
+                  <mat-label>Email: </mat-label>
+                  <input matInput placeholder="" type="email" formControlName="email">
+                  @if(this.formRegister.controls['email'].errors?.['required'] && this.submitted && this.formRegister.controls['email'].touched){
+                    <span class="error-message" >The email is required or invalid</span>
+                  }
+                  <br>
+                  @if(errorMessage && this.formRegister.controls['email'].touched && this.submitted && this.formRegister.controls['email'].errors?.['email']){
+                    <span class="error-message" >The email already exists or is invalid </span>
+                    }
+                </mat-form-field>
+               
+                <mat-form-field class="input-custom">
+                  <mat-label>Password: </mat-label>
+                  <input matInput formControlName="password" type="password" autocomplete="current-password">
+                  @if(this.formRegister.controls['password'].errors?.['required'] && this.submitted && this.formRegister.controls['password'].touched){
+                    <span class="error-message" >The password is required</span>
+                  }
+                </mat-form-field>
+                <div class="button-group flex">
+                  <button  type="button" class="btn" (click)="registerIn()">Registrarse</button>
+                  <button  type="button" class="btn" [routerLink]="['/']">Volver</button>
+                </div>
+              </form>
+        
+              <!-- Mostrar mensajes de error o éxito -->
+            
+              @if(successMessage){
+              <mat-error class="success-message">{{ successMessage }}</mat-error>
+              }
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="col-lg-6">
+              <img src="assets/registervectorial.png" class="img-fluid card-img" alt="registro">
+          </mat-card>
+    </div>  
+  </div>

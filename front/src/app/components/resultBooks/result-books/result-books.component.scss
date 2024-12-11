@@ -1,14 +1,10 @@
 .form-overlay {
-    align-items: center;
-    min-width: fit-content;
     z-index: 0;
-    text-align: center;
     font-family: "Space Grotesk", sans-serif;
     color: rgb(26,99,99);
     font-weight: bold;
 }
 .form-overlay input {
-    margin: 10px;
     width: 70%;
     border: 1px solid #7BB28A;
     border-radius: 5px;
@@ -23,12 +19,26 @@
 
 .card {
     font-family: "Space Grotesk", sans-serif;
-    margin: 10px;
+    margin: 20px;
     flex: 0 0 auto;
-    width: 50%;
+    width: 100px;
+    height: auto;
     display: flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    max-width: 100%;
+    background-color: white;
+    min-width: 400px;
+    border-bottom: 3px solid #7BB28A;
+    border-top: 3px solid #7BB28A;
+    border-left: 3px solid #7BB28A;
+    border-right: 3px solid #7BB28A;
+}
+.card-text{
+    min-height: fit-content;
+    max-height: 400px;
+    font-size: 14px;
 }
 
 .card:hover {
@@ -37,11 +47,14 @@
 }
 
 .card-body{
-    text-align: center;
     font-family: "Space Grotesk", sans-serif;
-    margin-top: 20px;
     color: rgb(13,13,13);
     flex: 1;
+    min-width: fit-content;
+    width: 100%;
+    margin-top: 5px;
+    text-align: left;
+
 }
 
 .btn{
@@ -65,37 +78,21 @@
 }
 
 #cards-container{
-    overflow-x: auto;
-    max-height: 200vh;
+    overflow-y: auto;
+    max-height: 50vh;
     margin-top: 10px;
     cursor: pointer;
     text-align: center;
     align-items: center;
-    width: 100%;
-    display: flex;
-    padding: 10px;
+    max-width: fit-content;
 }
 
 .card-img{
-    width: 150px;
-    height: auto;
     object-fit: cover;
-    margin:20px;
+    height: 100%;
 }
 
-.vectorbusqueda{
-    width: 60%;
-    height: auto;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
 
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
 
 //pendiente de hacer flechas direccionales en las cards de resultados

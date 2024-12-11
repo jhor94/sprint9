@@ -35,6 +35,9 @@ const Book = sequelize.define('Books',{
     publishers: {
         type: DataTypes.STRING(255),
     },
+    subject: {//nada
+        type: DataTypes.TEXT(400),
+    },
     favorite: {//nada
         type: DataTypes.BOOLEAN,
         defaultValue: 0

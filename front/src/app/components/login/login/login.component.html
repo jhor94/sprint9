@@ -1,0 +1,41 @@
+<div class="row text-center">
+    <h2> Introduce tus datos de cuenta</h2>
+</div>
+  <div class="card-container text-center justify-content-center align-items-center">
+    <div class="row">
+        <mat-card class="col-lg-6">
+            <img src="assets/vectorbusqueda.png" class="img-fluid card-img" alt="registro">
+        </mat-card>
+          <mat-card class="col-lg-6">
+                <mat-card-content>
+                  <form [formGroup]="formLogin" class="form-custom">
+                      <mat-form-field class="input-custom">
+                          <mat-label>Email: </mat-label>
+                          <input  matInput type="email" formControlName="email">
+                          @if(this.formLogin.controls['email'].errors?.['required'] && this.submitted && this.formLogin.controls['email'].touched){
+                            <span class="error-message" >The email is required or invalid.</span>
+                          }
+                          <br>
+                          @if(emailMessage && this.formLogin.controls['email'].touched && this.submitted){
+                            <span  class="error-message">
+                              The entered email does not exist.
+                            </span>
+                          }
+                        </mat-form-field>
+                        <mat-form-field class="input-custom">
+                          <mat-label>Password: </mat-label>
+                          <input  matInput formControlName="password" type="password" autocomplete="current-password">
+                          @if(this.formLogin.controls['password'].errors?.['required'] && this.submitted && this.formLogin.controls['password'].touched){
+                            <span class="error-message" >The password is required.</span>
+                          }
+                        </mat-form-field>
+                        <div class=" button-group flex">
+                          <button class="btn" (click)="LoginIn()">Accede</button>
+                          <button class="btn" (click)="register()">Registrate</button>
+                        </div>
+                  </form>
+                </mat-card-content>
+          </mat-card>  
+    </div>
+   
+  </div>

@@ -12,7 +12,25 @@
     <div class="collapse navbar-collapse text-center m-3" id="navbarColor02">
         <a class="nav-link active" [routerLink]="['/']"><i class="bi bi-house-door-fill m-1"></i>Inicio</a>
         <a class="nav-link"><i class="bi bi-book-fill m-1"></i>Categorías</a>
-        <a class="nav-link"><i class="bi bi-person-fill"></i>Conócenos</a>
-        <button class="btn justify-content-center">Inicia Sesión</button> <!--pendiente de poner en el centro cuando es repsonsive-->
+        <a class="nav-link"><i class="bi bi-chat-dots-fill m-1"></i>Conócenos</a>
+        <button class="btn justify-content-center" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-person-fill"></i>Mi cuenta</button> <!--pendiente de poner en el centro cuando es repsonsive-->
     </div>
 </nav>
+
+<div class="modal" tabindex="-1" id="loginModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center align-items-center justify-content-center">
+          <h5 class="modal-title text-center align-items-center justify-content-center">Accede a tu cuenta o crea una nueva</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-justify justify-content-justify">
+          <p class="text-center">Bienvenido a nuestra comunidad. Si ya tienes una cuenta, inicia sesión para continuar disfrutando de nuestros servicios. Si no, regístrate ahora para comenzar a explorar todo lo que ofrecemos. ¡Es rápido y fácil!</p>
+        </div>
+        <div class="modal-footer text-center align-items-center justify-content-center">
+          <button type="button" class="btn" data-bs-dismiss="modal" [routerLink]="['login']">Iniciar sesión</button>
+          <button type="button" class="btn" data-bs-dismiss="modal" [routerLink]="['register']">Registrarte</button>
+        </div>
+      </div>
+    </div>
+  </div>

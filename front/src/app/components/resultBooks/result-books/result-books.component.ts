@@ -3,6 +3,7 @@ import { BookService } from '../../../services/books/book.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Book } from '../../../interfaces/book';
 
 @Component({
   selector: 'app-result-books',
@@ -13,8 +14,9 @@ import { RouterLink } from '@angular/router';
 export class ResultBooksComponent {
 
   bookServicio = inject(BookService)
-  BookListSearch: any [] = []
+  BookListSearch: Book[] = []
   searchForm: FormGroup
+  imgUrl:string = ''
 
   constructor(private fb:FormBuilder){
     this.searchForm = this.fb.group({
@@ -36,7 +38,13 @@ export class ResultBooksComponent {
       this.bookServicio.searchtBooks(searchQuery).subscribe({
         next:(response: any) => {
           console.log(response)
-          this.BookListSearch = response.data
+          this.BookListSearch = response.data.map((book:Book) =>{
+            return {
+              ...book,
+              subject: book.subject,
+              imgUrl: book.cover = `https://covers.openlibrary.org/b/olid/${book.cover}-L.jpg`
+          }
+        });
           console.log(this.BookListSearch)
         },
       error: (err) => {
@@ -45,7 +53,6 @@ export class ResultBooksComponent {
       })
     }
   }
-
-  
 }
+
 

@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { Observable } from 'rxjs';
+import { Book } from '../../interfaces/book';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class BookService {
     this.apiUrl = '/books/';
   }
 
-  searchtBooks(searchQuery:string): Observable <any[]>{
+  searchtBooks(searchQuery:string): Observable <Book[]>{
     const params = new HttpParams().set('search', searchQuery)
 
-    return this.http.get<any[]>(`${this.backUrl}${this.apiUrl}/search`, {params})
+    return this.http.get<Book[]>(`${this.backUrl}${this.apiUrl}/search`, {params})
    }
 }
