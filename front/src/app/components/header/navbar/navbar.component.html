@@ -1,19 +1,36 @@
-<nav class="navbar navbar-expand-lg" data-bs-theme="">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="assets/logo.png" alt="Bootstrap" width="30" height="24">
+<nav class="nav-1 d-flex justify-content-between">
+  <div class="container-fluid">
+  
+      <div class="d-flex justify-content-between text-center">
+        <a class="navbar-brand d-flex justify-content-start " href="#">
+          <img src="assets/logo.png" alt="logo" class="logo img-fluid" width="30" height="24">
         </a>
+        <div class="d-flex mt-3">
+          <a class="tex-white social-media"><i class="bi bi-instagram"></i></a>
+          <a class="tex-white social-media"> <i class="bi bi-facebook"></i></a>
+          <a class="tex-white social-media "> <i class="bi bi-twitter"></i></a>
+          <a class="tex-white social-media"> <i class="bi bi-info-circle-fill"></i> Ayuda</a>
+            <button class="btn btn-sesion justify-content-center" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-person-fill"></i>Mi cuenta</button> <!--pendiente de poner en el centro cuando es repsonsive-->
+        </div>
+       
+      </div>
+
+    
+  </div>
+  
+</nav>
+<nav class="navbar navbar-expand-lg d-flex justify-content-center menu-2" data-bs-theme="">
+    <div class=" container">
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
             aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-    <div class="collapse navbar-collapse text-center" id="navbarColor02">
-
-        <a class="nav-link active" [routerLink]="['/']"><i class="bi bi-house-door-fill m-1"></i>Inicio</a>
-        <a class="nav-link"><i class="bi bi-book-fill m-1"></i>Categorías</a>
+    <div class="collapse navbar-collapse text-center justify-content-center " id="navbarColor02">
+        <a class="nav-link" [routerLink]="['/']"><i class="bi bi-house-door-fill m-1"></i>Inicio</a>
+        <a class="nav-link"><i class="bi bi-book-fill m-1"></i>Puntos de intercambio</a>
         <a class="nav-link"><i class="bi bi-chat-dots-fill m-1"></i>Conócenos</a>
-        <button class="btn justify-content-center" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-person-fill"></i>Mi cuenta</button> <!--pendiente de poner en el centro cuando es repsonsive-->
+      
     </div>
 </nav>
 

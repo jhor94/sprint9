@@ -1,0 +1,102 @@
+
+.rounded-circle{
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover;
+}
+.container-card{
+    height: 55vh;
+    overflow-y: auto;
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+
+
+}
+.container-profile{
+    background-color: #f6fff7;
+    border-top: 1px solid rgb(150, 150, 150);
+    border-top-left-radius: 100px;
+}
+
+@media (max-width: 768px) {
+    .container-profile {
+        border-top-right-radius: 100px;
+    }
+}
+
+nav{
+    background-color: #8cba8e;
+    border-right: 1px solid grey;
+    border-top: 1px solid grey;
+    border-top-right-radius: 100px;
+}
+@media (max-width: 768px) {
+    nav {
+        border-top-left-radius: 100px; 
+    }
+}
+
+.nav-link {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: black;
+    background-color: black;
+    color: white;
+    margin: 10px;
+    border-radius: 5px;
+
+}
+.nav-link:hover {
+    transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
+    background-color: black;
+    color: white;
+    
+}
+
+.titulo-menu{
+    text-decoration: underline;
+}
+
+
+.card {
+    font-family: "Space Grotesk", sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    display: flex;
+    max-width: 400px;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
+}
+.card-body{
+    background-color: #8cba8e;
+}
+
+.card-footer{
+    background-color: #5e5d5d;
+    color: white;
+}
+.card-img-top{
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    max-height: 100%;
+    max-width: 400px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.card{
+    height: 100%;
+}

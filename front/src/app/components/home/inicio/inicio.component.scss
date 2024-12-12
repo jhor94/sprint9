@@ -1,8 +1,5 @@
 .container{
     overflow: auto;
-
-
-
 }
 
 
@@ -10,9 +7,8 @@
     height: 60vh;
     width: 100%;
     display: flex;
-
+    
 }
-
 
 .card-body{
     padding-top: 50px;
@@ -21,7 +17,8 @@
     color: rgb(13,13,13);
     margin-top: 100px;
     width: 100%;
-    height: 500px
+    height: 500px;
+    background-color: white;
 }
 
 .card-text-banner {
@@ -32,9 +29,9 @@
 }
 
 .btn{
-    background-color: rgb(13,13,13);
+    background-color: #8cba8e;
     color: rgb(255, 255, 255);
-    border-color: rgb(13,13,13);
+    border-color: #8cba8e;
     text-align: center;
     justify-content: center;
     justify-items: center;
@@ -44,20 +41,30 @@
     font-size: 18px;
     white-space: nowrap;
     font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .btn:hover {
-   background-color: #5fad64; 
-   border-color: #5fad64;
+   background-color: #8cba8e; 
+   border-color: #8cba8e;
+   transform: translateY(-10px)
 }
 
+
+
 #banner-foto{
-    object-fit: contain;
-    position: relative;
     width: 100%;
     background-size: cover;
-    height: 50vh;
+    height: 100%;
     padding: 0;
-    margin: 0;
+    margin-left: 10px;
+    background-color: #e1f7e2;
+    border-top-left-radius: 1500px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 1500px;
+    border-bottom-left-radius: 20px;
+    margin-bottom: 20px;
+    z-index: -1;
+    max-width: fit-content;
 }
 
 @media screen and (max-width: 800px) {
@@ -74,30 +81,32 @@
     gap: 20px;
     display: flex;
     justify-content: center;
-    position: relative;
-    z-index: 1; /* Asegura que el contenido esté por encima del círculo */
     color: rgb(0, 0, 0); /* Color del texto */
     text-align: center;
     padding-top: 20px;
+    background-color: #8cba8e;
+
+    margin-top: 20px;
 }
 
 .card-recomendado{ //card
-    background-color: #ffffff;
+    background-color: #fbfffb;
     padding: 20px;
     border-bottom: 3px solid rgb(220, 213, 213);
     border-right: 3px solid rgb(220, 213, 213);
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-
 }
+
+
+
 .card-recomendado:hover {
     transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
 }
 
 .img-recomendado{ //card-img
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
     height: 300px;
 
@@ -108,12 +117,13 @@
     padding: 5px;
     border-top: 3px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
+
  }
 
  .btn-recomendado{
-    background-color: #5fad64;
+    background-color: #8cba8e;
        color: white;
-       border-color: #5fad64;
+       border-color: #8cba8e;
        text-align: center;
        justify-content: center;
        justify-items: center;
@@ -129,19 +139,15 @@
     border-color: rgb(13, 13, 13);
  }
 
- #favoritos{
-  background-color: #5fad64;
-    padding-top: 10px;
-    background: linear-gradient(5deg, #5fad64 40%, transparent 10%) -50% 0,
-              linear-gradient(-5deg, #5fad64 40%, transparent 10%)  -50% 0,
 
- }
+
+
  #favoritos h2{
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(0, 0, 0);
+    color: rgb(55, 55, 55);
     font-weight: bold;
  }
 
