@@ -8,11 +8,8 @@
       margin-top: 15px;
       min-width: fit-content;
 } 
-
-
-
 .nav-1 a {
-      color: #ffffff
+      color: #B88E2F
 }
 .navbar-toggler {
       border-color: #ffffff;  
@@ -27,7 +24,8 @@
 }
 .logo{
       width: 100%;
-      height: 60px;
+      margin-top: 10px;
+      height: 30px;
       margin-left: 10px;
       object-fit: contain;
 }
@@ -37,14 +35,16 @@
 nav .btn-sesion{
       margin: 10px;
       padding: 8px;
-      background-color: #8cba8e;
-      border-color: #8cba8e;
-      color: rgb(13,13,13);
+      background-color: #B88E2F;
+      border-color: #B88E2F;
+      color: #ffffff;
       min-width: fit-content;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 nav .btn-sesion:hover{
-      background-color: #8cba8e;
+      background-color: #434343;
+      border-color: #434343;
+      color: #ffffff;
       transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
 }
   
@@ -63,29 +63,31 @@ img{
 }
     
 .nav-link {
-      color: rgb(79, 79, 79);
+      color: #434343;
       font-family:Verdana, Geneva, Tahoma, sans-serif ;
       margin: 10px;
-      font-weight: bold;
+
       border-radius: 5px;
       text-align: center;
       padding: 10px;
       font-size: 20px;
       font-family: "Space Grotesk", sans-serif;
       white-space: nowrap;
-      width: 30%;
       min-width: fit-content;
+
+
 }
 
 .nav-link:hover {
-      color: rgb(94, 94, 94); 
+      color: #B88E2F; 
       text-decoration: underline;
+      font-weight: bold;
 }
 
 .btn{
-       background-color: rgb(13,13,13);
+       background-color: #434343;
        color: white;
-       border-color: rgb(13,13,13);
+       border-color: #434343;
        text-align: center;
        justify-content: center;
        justify-items: center;
@@ -96,8 +98,8 @@ img{
        white-space: nowrap
 }
 .btn:hover {
-      background-color: #5fad64; 
-      border-color: #5fad64;
+      background-color: #B88E2F; 
+      border-color: #B88E2F;
 }
 
 .modal{
@@ -113,4 +115,5 @@ img{
 .modal-footer{
 border-top: none; 
 }
+
 

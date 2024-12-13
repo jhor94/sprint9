@@ -9,11 +9,17 @@
     object-fit: cover;
 }
 
+.sidebar{
+    background-color: #fbe9d2;
+
+}
+
 ul{
     max-height: auto;
     margin: 10px;
     flex-direction: column;
     padding: 20px;
+    
 }
 
 .book{
@@ -22,6 +28,10 @@ ul{
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     background-color: white;
     border-radius: 15px;
+}
+
+h5{
+    color: #B88E2F
 }
 
 .card-text{
@@ -57,8 +67,8 @@ h3{
 }
 
 .btn-favorito {
-    background-color: #e1f4e6;
-    border-color: #e1f4e6;
+    background-color: #fbe9d2;
+    border-color: #fbe9d2;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -67,14 +77,14 @@ h3{
 }
 
 .btn-favorito:hover{
-    background-color: #b4dd9a;
-    border-color: #c6e2b5;
-    color:#000000
+    background-color: #B88E2F;
+    border-color: #B88E2F;
+    color:#ffffff
 
 }
 
 .container-profile{
-    background-color: #e3f9e5;
+    background-color: #b5964f;
     border-top: 1px solid rgb(150, 150, 150);
     border-top-left-radius: 100px;
     height: 100%;
@@ -83,29 +93,10 @@ h3{
     padding: 20px;
 }
 
-@media (max-width: 768px) {
-    .container-profile {
-        border-top-right-radius: 100px;
-    }
-}
-
-.sidebar{
-    background-color: #000000;
-    border-right: 1px solid grey;
-    border-top: 1px solid grey;
-    border-top-right-radius: 100px;
-}
-@media (max-width: 768px) {
-    .sidebar {
-        border-top-left-radius: 100px; 
-    }
-}
-
-
 .titulo-menu{
     text-decoration: underline;
+    color: #B88E2F
 }
-
 
 .card {
     font-family: "Space Grotesk", sans-serif;
@@ -121,9 +112,6 @@ h3{
 .card:hover {
     transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
-}
-.card-body{
-    background-color: #8cba8e;
 }
 
 .card-footer{
@@ -148,7 +136,7 @@ h3{
      flex: 1;
      width: 100%;
      text-align: left;
-     background-color: #000000;
+     background-color: #434343;
      position: relative;
      border-top-left-radius: 15px;
      border-bottom-left-radius: 15px;
@@ -163,10 +151,33 @@ h3{
     text-align: center;
     align-items: center;
     justify-content: center;
-    background-color: black;
-    color: white;
+    background-color: #B88E2F;
+    border-radius: 5px;
+    color: #FFF3E3;
+}
+
+.nav-link:hover{
+    text-decoration: underline;
 }
 
 .btn-action{
     color: white;
+}
+
+@media (max-width: 768px) {
+    .container-profile {
+        border-top-right-radius: 100px;
+    }
+    .book-action{
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        border-top-left-radius: 100px; 
+    }
+    
 }
