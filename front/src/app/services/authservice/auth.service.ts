@@ -12,31 +12,20 @@ export class AuthService {
   httpClient = inject(HttpClient);
   constructor() { }
 
-  checkEmail(email:string):Observable<boolean>{
-    return this.httpClient.get<User[]>(`${this.apiUrl}/users`).pipe(
-      switchMap(users =>{
-        const emailExists = users.some(user=> user.email === email);
-        return of(emailExists);
-      }),
-      catchError(()=> of(false))
-    )
-  
-}
-  register(user: User): Observable<ResponseAccess> {
-    return this.httpClient.post<ResponseAccess>(`${this.apiUrl}/users`, user)
+
+  register(user:User): Observable<ResponseAccess> {
+    return this.httpClient.post<ResponseAccess>(`${this.apiUrl}/auth/register`, user)
   }
 
 
   login(email: string, password:string): Observable<ResponseAccess> {
-    return this.httpClient.post<ResponseAccess>(`${this.apiUrl}/login`, {email, password})
+    return this.httpClient.post<ResponseAccess>(`${this.apiUrl}/auth/login`, {email, password}, {withCredentials:true})
   }
 
 
   IsLogin(){
     return !!localStorage.getItem('token'); // valida token para hacer hacer login
   }
-
- 
 
   removeLogin(){
     return localStorage.removeItem('token'); //quita toket para hacer log out

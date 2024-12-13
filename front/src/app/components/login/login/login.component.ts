@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { UserService } from '../../../services/user/user.service';
 
 
 
@@ -25,6 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class LoginComponent {
 
   private accesoService = inject(AuthService)
+  private accesoUser = inject(UserService)
   private router = inject(Router)
 
   public formBuild = inject(FormBuilder)
@@ -44,15 +46,16 @@ export class LoginComponent {
       return;
     }
 
-    const user: User = this.formLogin.value
-    this.accesoService.checkEmail(user.email).subscribe(emailExists => {
-      if (emailExists) {
+  const user: User = this.formLogin.value
         this.accesoService.login(user.email, user.password).subscribe({
           next: (response) => {
+            console.log(response)
             if (response && response.accessToken) {
               localStorage.setItem('token', response.accessToken)
-              this.router.navigate(['starship'])
-              console.log("logeado correcto")
+              localStorage.setItem('user', JSON.stringify(response.data.user))
+              console.log(response.data.user)
+              this.router.navigate(['areasocios'])
+              console.log("logeado correcto", )
             } else {
               alert("error al registrar por token")
             }
@@ -61,12 +64,8 @@ export class LoginComponent {
             console.log("error al registrarse", error)
           }
         });
-      }else{
-        this.emailMessage = "correo ya existente"
-        console.log("entra error login bien ya que no existe correo")
-      }
-
-    })
+  
+  
   }
 
   register() {

@@ -5,13 +5,14 @@ import { ResultBooksComponent } from './components/resultBooks/result-books/resu
 import { LoginComponent } from './components/login/login/login.component';
 import { RegisterComponent } from './components/register/register/register.component';
 import { UserprofileComponent } from './components/userprofile/userprofile/userprofile.component';
+import { accesoGuard } from './guards/acceso.guard';
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
     {path: 'books', component: ResultBooksComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path:'areasocio', component: UserprofileComponent},
+    {path:'areasocios', component: UserprofileComponent , canActivate: [accesoGuard]},
    /* {path: 'book/:id', component: BooklistComponent, /*canActivate:[accesoGuard]},*/
 
     {path:'***', redirectTo: '', pathMatch:'full'}

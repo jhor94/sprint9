@@ -17,6 +17,7 @@ export class ResultBooksComponent {
   BookListSearch: Book[] = []
   searchForm: FormGroup
   imgUrl:string = ''
+  book: Book[]= []
 
   constructor(private fb:FormBuilder){
     this.searchForm = this.fb.group({
@@ -42,7 +43,7 @@ export class ResultBooksComponent {
             return {
               ...book,
               subject: book.subject,
-              imgUrl: book.cover = `https://covers.openlibrary.org/b/olid/${book.cover}-L.jpg`
+              cover: book.cover = `https://covers.openlibrary.org/b/olid/${book.cover}-L.jpg`
           }
         });
           console.log(this.BookListSearch)
@@ -52,6 +53,37 @@ export class ResultBooksComponent {
       }
       })
     }
+  }
+
+
+
+
+  addFavorite(book:Book){
+    console.log(book)
+    book.favoite = !book.favoite //alternamos el estado de favorito
+
+
+    const bookData = {
+      external_id_api: book.external_id_api,
+      user_id:book.user_id,
+      title:book.title,
+      author:book.author,
+      isbn: book.isbn,
+      number_of_pages:book.number_of_pages,
+      cover: book.cover,
+      publishers: book.publishers,
+      subject:book.subject,
+    };
+    this.bookServicio.updateBook(bookData).subscribe(
+      response =>{
+        console.log(response, "libro actualizado o creado")
+      },
+      error =>{
+        console.error(error, "error al actualizar el libro")
+        //si ocurre algun error, revertimos el cambio a favorito
+        book.favoite = !book.favoite
+      }
+    )
   }
 }
 

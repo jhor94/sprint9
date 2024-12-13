@@ -142,14 +142,36 @@ export const updateBook = async (req, res)=> {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const {id} = req.params
-        const {favorite} = req.body
+        
+        const {
+            external_id_api,
+            user_id,
+            title,
+            author,
+            isbn,
+            number_of_pages,
+            cover,
+            publishers,
+            subject,
+            favorite} = req.body
     try {
-        const book = await Book.findByPk(id)
+        const book = await Book.findOne({where:{external_id_api:external_id_api}})
         if(!book){
+            book = await Book.create({
+                external_id_api,
+                user_id,
+                title,
+                author,
+                isbn,
+                number_of_pages,
+                cover,
+                publishers,
+                subject,
+                favorite
+            })
             return res.status(404).json({
                 code:-100,
-                msg: 'Libro no encontrado en la base de datos'
+                msg: 'Libro no encontrado en la base de datos y agregado'
             })
         }
 

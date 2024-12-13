@@ -9,6 +9,5 @@ export interface Book {
     cover: string,
     publishers: string,
     subject:string,
-    favoite: boolean,
-    imgUrl:string,
+    favoite?: boolean,
 }

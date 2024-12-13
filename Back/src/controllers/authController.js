@@ -17,7 +17,8 @@ export const register = async (req, res)=> {
         const errors = validationResult(req)
 
         if(!errors.isEmpty()){
-            return res.status(400).jsonn({errors:errors.array()});
+            console.log("Errores de validación:", errors.array()); 
+            return res.status(400).json({errors:errors.array()});
         }
         const {name,email,password} = req.body
         const existingUsers = await User.findOne({
@@ -53,11 +54,14 @@ export const register = async (req, res)=> {
         res.status(200).json({
             code:1,
             msg:'User Registrado correctamente',
-            user: {
-                id_user: newUser.id_user,
-                name:newUser.name,
-                email:newUser.email
-            }
+            accessToken:accessToken,
+            data:{
+                user: {
+                    id_user: newUser.id_user,
+                    name:newUser.name,
+                    email:newUser.email
+                }
+            } 
         })
     } catch (error) {
         console.error(error)
@@ -108,11 +112,13 @@ export const login = async (req, res)=> {
         res.status(200).json({
             code:1,
             msg:'User logeado correctamente',
+            accessToken: accessToken,
             data: {
                 user:{
+                    id_user:user.id_user,
                     name:user.name,
                     email:user.email,
-                }
+                },
             }
         })
     } catch (error) {

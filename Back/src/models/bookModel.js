@@ -41,7 +41,7 @@ const Book = sequelize.define('Books',{
     favorite: {//nada
         type: DataTypes.BOOLEAN,
         defaultValue: 0
-    }
+    },
 },
 {   
     indexes:[{unique: true, fields: ['isbn']}],

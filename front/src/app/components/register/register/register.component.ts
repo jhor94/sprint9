@@ -11,72 +11,64 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../../services/authservice/auth.service';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../../services/user/user.service';
 
 
 @Component({
   selector: 'app-register',
-  imports: [CommonModule,ReactiveFormsModule,MatSlideToggleModule,MatCardModule,MatFormFieldModule, MatInputModule, MatButtonModule, MatError, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, MatSlideToggleModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatError, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
   private accesoService = inject(AuthService)
+  private accesoUser = inject(UserService)
   private router = inject(Router)
 
   public formBuild = inject(FormBuilder)
-  public successMessage : string | null = null
-  public errorMessage : string | null = null
+  public successMessage: string | null = null
+  public errorMessage: string | null = null
   public submitted: boolean | null = false
 
 
-  
+
 
   public formRegister: FormGroup = this.formBuild.group({
     name: ["", Validators.required],
     email: ["", [Validators.required, Validators.email]],
     password: ["", Validators.required],
   })
-  
+
 
   registerIn() {
     this.submitted = true;
     if (this.formRegister.invalid) {
-     this.errorMessage= "error formulario"
-     return;
+      this.errorMessage = "error formulario"
+      return;
     }
 
     const user: User = this.formRegister.value
 
 
-    this.accesoService.checkEmail(user.email).subscribe(emailExists =>{
-        if (emailExists) {
-          this.errorMessage = "El correo ya esta en uso";
-          console.log("existe entra")
-          return;
+    this.accesoService.register(user).subscribe({
+      next: (response) => {
+        if (response.accessToken) {
+          localStorage.setItem('token', response.accessToken);
+          localStorage.setItem('user', JSON.stringify(response.data.user))
+          this.successMessage = "Registrado con exito"
+          this.router.navigate(['areasocios'])
         } else {
-          this.accesoService.register(user).subscribe({
-            next: (response) => {
-              console.log("registrado correctamente", response);
-
-              if(response.accessToken){
-                localStorage.setItem('token',response.accessToken);
-                this.successMessage = "Registrado con exito"
-                this.router.navigate(['starship'])
-              }else{
-                alert("error al registrar por token")
-                console.log(user)
-              }
-            },
-            error: (error) => {
-              console.log("error al registrarse", error)
-            }
-          });
+          alert("error al registrar por token")
+          console.log(user)
         }
- 
+      },
+      error: (error) => {
+        console.log("error al registrarse", error)
+      }
     })
 
-  }
 
-    constructor(){
-    }
+  }
+  constructor() {
+  }
 }
