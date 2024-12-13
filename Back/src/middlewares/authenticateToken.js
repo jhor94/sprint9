@@ -6,15 +6,17 @@ export const authenticateToken = (allowedRoles) => async (req,res,next) => {
     try {
         const {cookies} = req
         const accessToken = cookies.token
+        console.log(cookies.token)
 
         if(!accessToken){
             return res.status(401).json({
                 code: -50,
-                message: 'No hay token de acceso'})
+                message: 'No hay token de acceso',
+                })
         }
 
         const decodedToken = jwt.verify(accessToken, process.env.SECRET_KEY)//se verifica la clave secreta que es está en env con jwt
-        console.log(decodedToken.id_user)
+        console.log("verificacion token",decodedToken.id_user)
         const user = await User.findByPk(decodedToken.id_user)//se busca el usuario en la base de datos
        
         if(!user){

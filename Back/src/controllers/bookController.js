@@ -44,7 +44,10 @@ export const addBook = async (req, res) => {
     try {
         const {external_id_api, user_id,title,author,isbn,number_of_pages,cover,publishers,subject}= req.body
         const existingBook = await Book.findOne({ 
-            where: {external_id_api: external_id_api}
+            where: {
+                external_id_api: external_id_api,
+                user_id: user_id
+            }
         });
 
         if(existingBook){
@@ -74,7 +77,8 @@ export const addBook = async (req, res) => {
     console.error(error)
     res.status(500).json({
         code:-100,
-        msg: 'Ha ocurrido un error al agregar el libro'
+        msg: 'Ha ocurrido un error al agregar el libro',
+        error: error
     })
 
 }
@@ -85,10 +89,16 @@ export const getBooks = async (req, res)=> {
         const errors = validationResult(req)
 
         if(!errors.isEmpty()){
-            return res.status(400).jsonn({errors:errors.array()});
+            return res.status(400).json({errors:errors.array()});
         }
+        console.log('Received user_id:', req.params.id);
 
-        const books = await Book.findAll();
+        console.log(req.user.id_user, "respuesta del front")
+        const books = await Book.findAll({
+            where:{
+                user_id:req.params.id
+            }
+        });
 
         res.status(200).json({
             code:1,
@@ -100,6 +110,7 @@ export const getBooks = async (req, res)=> {
         res.status(500).json({
             code:-100,
             mgs: 'Ha ocurrido un error al obtener los libros',
+            error:error
         })
     }
 }

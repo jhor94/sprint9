@@ -44,7 +44,7 @@ const Book = sequelize.define('Books',{
     },
 },
 {   
-    indexes:[{unique: true, fields: ['isbn']}],
+    indexes:[{unique: true, fields:['external_id_api', 'user_id']}],
     timestamps: true,
     updatedAt: 'updated_at',
     createdAt: 'created_at'

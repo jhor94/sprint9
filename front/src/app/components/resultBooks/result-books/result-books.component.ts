@@ -16,10 +16,10 @@ export class ResultBooksComponent {
   bookServicio = inject(BookService)
   BookListSearch: Book[] = []
   searchForm: FormGroup
-  imgUrl:string = ''
-  book: Book[]= []
+  imgUrl: string = ''
+  book: Book[] = []
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb: FormBuilder) {
     this.searchForm = this.fb.group({
       searchQuery: ['']
     })
@@ -32,25 +32,25 @@ export class ResultBooksComponent {
   searchBooks() {
     const searchQuery = this.searchForm.get('searchQuery')?.value
     console.log("buscando libros de", searchQuery)
-    if(searchQuery){
+    if (searchQuery) {
 
       this.BookListSearch = []
       console.log(this.BookListSearch)
       this.bookServicio.searchtBooks(searchQuery).subscribe({
-        next:(response: any) => {
+        next: (response: any) => {
           console.log(response)
-          this.BookListSearch = response.data.map((book:Book) =>{
+          this.BookListSearch = response.data.map((book: Book) => {
             return {
               ...book,
               subject: book.subject,
               cover: book.cover = `https://covers.openlibrary.org/b/olid/${book.cover}-L.jpg`
-          }
-        });
+            }
+          });
           console.log(this.BookListSearch)
         },
-      error: (err) => {
-        console.error(err)
-      }
+        error: (err) => {
+          console.error(err)
+        }
       })
     }
   }
@@ -58,33 +58,46 @@ export class ResultBooksComponent {
 
 
 
-  addFavorite(book:Book){
+  addBookList(book: Book) {
     console.log(book)
-    book.favoite = !book.favoite //alternamos el estado de favorito
+    const user = localStorage.getItem('user');
+    console.log(user)
+    if(!user){
+      alert('Debes estar logueado para agregar libros a tu lista')
+      return
+    }
 
+    const parsedUser = JSON.parse(user)
+    console.log(parsedUser)
+    const user_id = parsedUser.id_user
 
     const bookData = {
       external_id_api: book.external_id_api,
-      user_id:book.user_id,
-      title:book.title,
-      author:book.author,
+      user_id: Number(user_id),
+      title: book.title,
+      author: book.author,
       isbn: book.isbn,
-      number_of_pages:book.number_of_pages,
+      number_of_pages: book.number_of_pages,
       cover: book.cover,
       publishers: book.publishers,
-      subject:book.subject,
+      subject: book.subject,
     };
-    this.bookServicio.updateBook(bookData).subscribe(
-      response =>{
-        console.log(response, "libro actualizado o creado")
+    console.log('Datos enviados al backend:', bookData);
+
+    this.bookServicio.addBook(bookData).subscribe({
+      next: (response: any) => {
+        console.log(response, "libro agregado")
+        this.BookListSearch.push(book)
       },
-      error =>{
-        console.error(error, "error al actualizar el libro")
-        //si ocurre algun error, revertimos el cambio a favorito
-        book.favoite = !book.favoite
+      error: (err) => {
+        console.error(err, "error al agregar")
       }
-    )
+    })
+    console.log(this.BookListSearch)
+    console.log("librocreado")
   }
 }
+
+
 
 

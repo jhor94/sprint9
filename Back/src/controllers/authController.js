@@ -47,7 +47,7 @@ export const register = async (req, res)=> {
             httpOnly:true, //solo accesible desde el servidor no desde javascript del cliente
             secure: process.env.NODE_ENV === 'production', //Solo se envía a través de conexiones HTTPS (en producción).
             sameSite: 'strict', //evita que se envio de la cookies desde otros dominios
-            maxAge: 60 * 60 * 24 * 30, //tiempo de vida de la cookie 30dias
+            maxAge: 60 * 60 * 24 * 30, //tiempo de vida de la cookie
             path: '/' // Establece el ámbito de la cookie en todo el dominio (/).
         })
         res.setHeader('set-Cookie', token)

@@ -1,22 +1,86 @@
-
+.container-fluid{
+    overflow: auto;
+    min-height: 100vh;
+    flex-wrap: nowrap;
+}
 .rounded-circle{
     width: 100px; 
     height: 100px; 
     object-fit: cover;
 }
-.container-card{
-    height: 55vh;
-    overflow-y: auto;
-    width: 100%;
-    margin: 10px;
-    padding: 10px;
 
+ul{
+    max-height: auto;
+    margin: 10px;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.book{
+    font-family: "Space Grotesk", sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: white;
+    border-radius: 15px;
+}
+
+.card-text{
+    font-size: 14px;
+}
+
+.book:hover {
+    transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
+}
+
+h2{
+    font-size: 30px;
+    color: rgba(13,13,13);
+    justify-content: justify;
+    font-family: "Space Grotesk", sans-serif;
+    padding: 0;
+    width: 100%;
+    display: flex;
+}
+
+h3{
+    font-size: 16px;
+}
+
+.card-img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    max-height: 600px;
+}
+
+.btn-favorito {
+    background-color: #e1f4e6;
+    border-color: #e1f4e6;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 20px;
+}
+
+.btn-favorito:hover{
+    background-color: #b4dd9a;
+    border-color: #c6e2b5;
+    color:#000000
 
 }
+
 .container-profile{
-    background-color: #f6fff7;
+    background-color: #e3f9e5;
     border-top: 1px solid rgb(150, 150, 150);
     border-top-left-radius: 100px;
+    height: 100%;
+    flex:1;
+    overflow-y: auto;
+    padding: 20px;
 }
 
 @media (max-width: 768px) {
@@ -25,35 +89,18 @@
     }
 }
 
-nav{
-    background-color: #8cba8e;
+.sidebar{
+    background-color: #000000;
     border-right: 1px solid grey;
     border-top: 1px solid grey;
     border-top-right-radius: 100px;
 }
 @media (max-width: 768px) {
-    nav {
+    .sidebar {
         border-top-left-radius: 100px; 
     }
 }
 
-.nav-link {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-    color: black;
-    background-color: black;
-    color: white;
-    margin: 10px;
-    border-radius: 5px;
-
-}
-.nav-link:hover {
-    transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
-    background-color: black;
-    color: white;
-    
-}
 
 .titulo-menu{
     text-decoration: underline;
@@ -93,10 +140,33 @@ nav{
     align-items: center;
     display: flex;
     justify-content: center;
-
-
 }
 
-.card{
-    height: 100%;
+.book-action{
+    font-family: "Space Grotesk", sans-serif;
+     color: rgb(255, 255, 255);
+     flex: 1;
+     width: 100%;
+     text-align: left;
+     background-color: #000000;
+     position: relative;
+     border-top-left-radius: 15px;
+     border-bottom-left-radius: 15px;
+}
+.nav-link{
+    color: black;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    font-size: 16px;
+    margin: 5px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+}
+
+.btn-action{
+    color: white;
 }

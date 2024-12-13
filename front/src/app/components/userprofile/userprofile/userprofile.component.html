@@ -1,175 +1,115 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row">
 
+
         <!-- Contenido principal -->
-        <main class="col-12 col-md-9 col-lg-10 p-4 container-profile ">
-            <h1 class="d-flex text-center justify-content-center  mb-3">Bienvenido a la App de Intercambio de Libros
-            </h1>
-            <h3 class="d-flex text-center justify-content-center  mb-3">Aquí puedes gestionar tus libros, explorar
-                nuevos intercambios y mucho más.</h3>
-            <!--Estos son los libros favoritos-->
-            <div class="container-card ">
-                <div class="row">
-                    <div class="col-md-3 mt-3">
-                        <div class="card mb-3">
-                            <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="...">
-                            <div class="card-body">
-                                <h2 class="card-title">Card title</h2>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
+        <main class="col-12 col-md-8 col-lg-9 container-profile ">
+            <div class="container m-3">
+                <div class="row d-flex justify-content-center">
+                    <ul class="col-12 ">
+                        <!---  <li class="book row mb-4"> borrar cuando dejemos de hacer pruebas-->
+                        @for(book of listaUserBook;track book.external_id_api){
+                        <li class="book row mb-4">
+                            <div class="col-12 col-sm-12 col-md-3 book-action d-flex flex-column align-items-center justify-content-between">
+                                <div class="d-flex justify-content-end flex-column gap-2">
+                                    <button class="btn btn-favorito  mb-3 ">Ver Propietarios </button>
+                                    <button class=" btn btn-favorito  mb-3 ">Ver puntos P-book </button>
+                                    <h3 class="d-flex text-light"> Coste P-book: 350 Puntos </h3>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <small class="">Last updated 3 mins ago</small>
+                            <div class="col-12 col-sm-12 col-md-9">
+                                <div class="row">
+                                    <div class="col-8 col-sm-9 col-md-9 col-lg-9">
+                                        <h5 class="card-title">{{book.title}}</h5>
+                                        <h2 class="card-text">{{book.external_id_api}}</h2>
+                                        <h3 class="card-text">Autor/a: {{book.author}}</h3>
+                                        <h3 class="card-text">Código ISBN: {{book.isbn}}</h3>
+                                        <h3 class="card-text">Nº de páginas: {{book.number_of_pages}}</h3>
+                                        <h4 class="card-text"><small>Editorial: {{book.publishers}}</small></h4>
+                                        <h4 class="card-text">Categoría literaria: </h4>
+                                    </div>
+                                    <div class="col-4 col-sm-3 col-md-3 col-lg-3 book-img">
+                                        <img [src]="book.cover" class="img-fluid card-img rounded-start h-100" alt="portada">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 mt-3">
-                        <div class="card">
-                            <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="...">
-                            <div class="card-body">
-                                <h2 class="card-title">Card title</h2>
-                                <p class="card-text">This card has supporting text below as a natural lead-in to
-                                    additional content.</p>
+                            
+                            <!--  <div class="col-12 col-sm-12 col-md-9">
+                                <div class="row">
+                                    <div class="col-4 col-sm-3 col-md-3 col-lg-3 book-img">
+                                        <img src="assets/portadaprueba.png" class="card-img rounded-start" alt="portada"> 
+                                    </div>
+                                    <div class="col-8 col-sm-9 col-md-9 col-lg-9 mb-2">
+                                    <h2 class="card-title">Titulo del libro</h2>
+                                    <h3 class="card-text"></h3>
+                                    <h3 class="card-text">Autor/a: </h3>
+                                    <h3 class="card-text">Código ISBN: </h3>
+                                    <h3 class="card-text">Editorial: </h3>
+                                    <h4 class="card-text">Categoría literaria: </h4>
+                                    <button class="btn btn-favorito"(click)="addFavorite()"> <i class="bi bi-heart-fill"></i></button> 
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <small class="">Last updated 3 mins ago</small>
+                            <div class="col-12 col-sm-12 col-md-3 book-action d-flex flex-column align-items-center justify-content-between">
+                                <div class="d-flex justify-content-end flex-column gap-2">
+                                    <h2 class="text-center ">Puesdes marcar como favorito o cambiar por puntos p-book</h2> 
+                                       
+                                </div>
+                                
+                                <div class="d-flex d-flex  flex-column">
+                                    <button class="btn d-flex justify-content-center text-center">Ver propietarios</button>
+                                    <button class="btn d-flex mb-3 ">Ver puntos P-book </button>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card">
-                            <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="...">
-                            <div class="card-body">
-                                <h2 class="card-title">Card title</h2>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This card has even longer content than the first to
-                                    show that equal height action.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card">
-                            <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="...">
-                            <div class="card-body">
-                                <h2 class="card-title">Card title</h2>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This card has even longer content than the first to
-                                    show that equal height action.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card">
-                            <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="...">
-                            <div class="card-body">
-                                <h2 class="card-title">Card title</h2>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This card has even longer content than the first to
-                                    show that equal height action.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card">
-                            <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="...">
-                            <div class="card-body">
-                                <h2 class="card-title">Card title</h2>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This card has even longer content than the first to
-                                    show that equal height action.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="card">
-                            <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="...">
-                            <div class="card-body">
-                                <h2 class="card-title">Card title</h2>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This card has even longer content than the first to
-                                    show that equal height action.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-
-                    </div>
+                            </li>-->
+                        </li>
+                        }
+                    </ul>
                 </div>
             </div>
-            <div>
-                <h2 class="">Crud de Personas</h2>
-                <button class="btn btn-primary" (click)="getListaUser()">AGREGAR PERSONAS</button>
+
+            <!--     <div class="col-md-3 mt-3">
+                @for (book of listaUserBook; track book.user_id) {
+                <div class="card mb-3">
+                    <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="...">
+                   
+                    <div class="card-body">
+                        <h2 class="card-title">{{book.user_id}}</h2>
+                        <p class="card-text">{{book.title}}</p>
+                        <p class="card-text">{{book.number_of_pages}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            }
+            </div>-->
+        </main>
+        <!-- Sidebar -->
+        <nav class="col-12 col-md-4 col-lg-3 text-white sidebar p-3">
+            <div class="text-center mb-4">
+                <img src="../assets/fotoperfil.jpg" class="img-fluid rounded-circle" alt="Foto de perfil">
+                <h5 class="mt-2 text-light">{{user.name}}</h5>
             </div>
-            <table class="table table-hover ">
-                <thead>
-                    
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nombre</th>
+            <h4 class="text-center titulo-menu">Mi cuenta</h4>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-house-door-fill m-1 "></i> Inicio</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="#"><i class="bi bi-book-fill m-1 "></i> Mis Libros</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link t" href="#"><i class="bi bi-heart-fill m-1"></i> Lista de Deseos</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#"><i class="bi bi-person-fill m-1 "></i> Mi Perfil</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="#"><i class="bi bi-gear-fill m-1 "></i> Configuración</a>
+                </li>
+            </ul>
+        </nav>
 
-                        <th scope="col">Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (user of listaUser;track user.id_user) {
-                    <tr class="table-active">
-                        <td>{{user.id_user}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.email}}</td>
-                        <td class="container-button mt-3">
-                            <button type="button" class="btn btn-info btn-sm ms-2">Editar </button>
-                            <button type="button" (click)="borrarPersona(user.id_user!)"
-                                class="btn btn-secondary btn-sm ms-2">Borrar
-                            </button>
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-    </main>
-    <!-- Sidebar -->
-    <nav class="col-12 col-md-3 col-lg-2 text-white sidebar p-3">
-        <div class="text-center mb-4">
-            <img src="../assets/fotoperfil.jpg" class="img-fluid rounded-circle" alt="Foto de perfil">
-            <h5 class="mt-2 text-black">{{user.name}}</h5>
-        </div>
-        <h4 class="text-center titulo-menu">Mi cuenta</h4>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-house-door-fill"></i> Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#"><i class="bi bi-book-fill"></i> Mis Libros</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link t" href="#"><i class="bi bi-heart-fill"></i> Lista de Deseos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-person-fill"></i> Mi Perfil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#"><i class="bi bi-gear-fill"></i> Configuración</a>
-            </li>
-        </ul>
-    </nav>
-
-</div>
+    </div>
 </div>

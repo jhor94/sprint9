@@ -9,8 +9,8 @@ const router = Router()
 
 //rutas URL
 router.get('/search', fetchsaveBooks);
-router.get('/', getBooks);
-router.get('/:id', getBookId);
+router.get('/:id',authenticateToken(['user','mod','admin']),getBooks);
+//router.get('/:id', getBookId);
 router.post('/', addBook);
 router.patch('/:external_id_api', updateBook);
 router.delete('/:id', deleteBook);
