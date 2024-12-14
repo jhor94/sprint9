@@ -12,7 +12,8 @@
           @if(!isLoggedIn()){
             <button class="btn btn-sesion justify-content-center" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-person-fill"></i>Mi cuenta</button> <!--pendiente de poner en el centro cuando es repsonsive-->
           }@else {
-            <button class="btn btn-sesion justify-content-center"(click)="logOut()"  ><i class="bi bi-person-fill"></i>Cerrar sesión</button>
+            <button class="btn btn-sesion justify-content-center"[routerLink]="['areasocios']"><i class="bi bi-person-fill" ></i>Mi Perfil</button>
+            <button class="btn btn-sesion justify-content-center"(click)="logOut()"  ><i class="bi bi-power m-1"></i>Cerrar sesión</button>
           }
             
         </div>

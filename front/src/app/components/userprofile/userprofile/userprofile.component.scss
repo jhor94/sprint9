@@ -1,7 +1,6 @@
-.container-fluid{
-    overflow: auto;
-    min-height: 100vh;
+.container{
     flex-wrap: nowrap;
+    display: flex;
 }
 .rounded-circle{
     width: 100px; 
@@ -10,7 +9,9 @@
 }
 
 .sidebar{
-    background-color: #fbe9d2;
+    background-color: #ffff;
+    border-left: 3px dotted #8b5a2b;
+    margin-left: auto
 
 }
 
@@ -25,13 +26,17 @@ ul{
 .book{
     font-family: "Space Grotesk", sans-serif;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background-color: white;
-    border-radius: 15px;
+    margin: auto;
 }
 
 h5{
-    color: #B88E2F
+    color: #fbe9d2;
+    font-weight: bold;
+}
+
+.name-profile{
+    color: #8b5a2b;
+    font-weight: bold;
 }
 
 .card-text{
@@ -39,13 +44,12 @@ h5{
 }
 
 .book:hover {
-    transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
+    transform: translateY(-2px); /* Desplaza la tarjeta hacia arriba */
 }
 
 h2{
-    font-size: 30px;
-    color: rgba(13,13,13);
+    font-size: 20px;
+    color: #FFF3E3;
     justify-content: justify;
     font-family: "Space Grotesk", sans-serif;
     padding: 0;
@@ -77,14 +81,14 @@ h3{
 }
 
 .btn-favorito:hover{
-    background-color: #B88E2F;
-    border-color: #B88E2F;
+    background-color: #8b5a2b;
+    border-color: #8b5a2b;
     color:#ffffff
 
 }
 
 .container-profile{
-    background-color: #b5964f;
+
     border-top: 1px solid rgb(150, 150, 150);
     border-top-left-radius: 100px;
     height: 100%;
@@ -95,7 +99,7 @@ h3{
 
 .titulo-menu{
     text-decoration: underline;
-    color: #B88E2F
+    color: #8b5a2b
 }
 
 .card {
@@ -114,33 +118,9 @@ h3{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
 }
 
-.card-footer{
-    background-color: #5e5d5d;
-    color: white;
-}
-.card-img-top{
-    object-fit: contain;
-    width: 100%;
-    height: auto;
-    overflow: auto;
-    max-height: 100%;
-    max-width: 400px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
 
-.book-action{
-    font-family: "Space Grotesk", sans-serif;
-     color: rgb(255, 255, 255);
-     flex: 1;
-     width: 100%;
-     text-align: left;
-     background-color: #434343;
-     position: relative;
-     border-top-left-radius: 15px;
-     border-bottom-left-radius: 15px;
-}
+
+
 .nav-link{
     color: black;
     text-align: center;
@@ -151,7 +131,7 @@ h3{
     text-align: center;
     align-items: center;
     justify-content: center;
-    background-color: #B88E2F;
+    background-color: #8b5a2b;
     border-radius: 5px;
     color: #FFF3E3;
 }
@@ -160,24 +140,117 @@ h3{
     text-decoration: underline;
 }
 
-.btn-action{
-    color: white;
-}
-
-@media (max-width: 768px) {
-    .container-profile {
-        border-top-right-radius: 100px;
-    }
-    .book-action{
-        border-top-right-radius: 15px;
-        border-bottom-right-radius: 15px;
-    }
-}
-
 
 @media (max-width: 768px) {
     .sidebar {
-        border-top-left-radius: 100px; 
+        border-left: none
     }
     
 }
+// estanteria
+.bookshelf {
+    background: linear-gradient(to bottom, #8b5a2b, #8b5a2b); /* Fondo similar a madera */
+    padding: 10px;
+    border: 10px solid #8b5a2b; /* Marco de la estantería */
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .bookshelf-library{
+    background: linear-gradient(to bottom, #434343, #434343); /* Fondo similar a madera */
+    padding: 10px;
+    border: 10px solid #434343; /* Marco de la estantería */
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  
+  .shelf {
+    display: flex;
+    align-items: flex-end; /* Los libros "se paran" al fondo */
+    padding: 5px 0;
+    border-bottom: 3px solid #8b5a2b; /* Línea que simula el estante */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fffefd ;
+    border-radius: 5px;
+  }
+
+  .book-card {
+    background-color: #464544; /*#a17751*/
+    border: none;
+    width: 70%;
+    height: 200px;
+    text-align: center;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    border-bottom: 5px solid #dbd3cc; /* Marco de la estantería */
+    border-left: 5px solid #4d3016; /* Marco de la estantería */
+    color:white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .book-card-library {
+    background-color: #8b5a2b; /*#a17751*/
+    border: none;
+    width: 70%;
+    height: 200px;
+    text-align: center;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    border-bottom: 5px solid #dbd3cc; /* Marco de la estantería */
+    border-left: 5px solid #4d3016; /* Marco de la estantería */
+    color:white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .book-card img {
+    max-height: 120px;
+    object-fit: cover;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 3px;
+  }
+  
+  .book-card .card-title {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    white-space: normal;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .book-card .card-author {
+    font-size: 0.8rem;
+  }
+
+  .book-card-library .card-title {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    white-space: normal;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .book-card-library .card-author {
+    font-size: 0.8rem;
+  }
+
+  

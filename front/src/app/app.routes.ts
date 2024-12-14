@@ -10,9 +10,11 @@ import { accesoGuard } from './guards/acceso.guard';
 export const routes: Routes = [
     {path: '', component: InicioComponent},
     {path: 'books', component: ResultBooksComponent},
+    {path: 'books-list', component: BooklistComponent},
+    {path:'areasocios', component: UserprofileComponent , canActivate: [accesoGuard]},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path:'areasocios', component: UserprofileComponent , canActivate: [accesoGuard]},
+   
    /* {path: 'book/:id', component: BooklistComponent, /*canActivate:[accesoGuard]},*/
 
     {path:'***', redirectTo: '', pathMatch:'full'}

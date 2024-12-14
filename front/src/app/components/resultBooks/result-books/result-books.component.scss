@@ -12,7 +12,7 @@
 }
 .form-overlay input {
     width: 100%;
-    border: 1px solid #5fad64;
+    border: 1px solid #8b5a2b;
     border-radius: 5px;
     text-align: center;
     margin: 2px;
@@ -52,22 +52,39 @@ li:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
 }
 
+.info-action{
+    width: 80%;
+}
+
 .book-action{
    font-family: "Space Grotesk", sans-serif;
     color: rgb(13,13,13);
-    flex: 1;
-    width: 100%;
+    width: 20%;
+    height: auto;
     text-align: left;
-    background-color: #e1f4e6;
+    background-color: #efdfc2;
     border-bottom-right-radius: 5px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+}
 
+@media (max-width: 1200px) {
+    .book-action {
+        font-size: 14px; /* Reduce el tamaño de fuente en pantallas pequeñas */
+        padding: 8px 12px; /* Ajusta el padding */
+        width: 100%;
+        overflow: auto;
+    }
 }
 
 .btn{
-    background-color: #5fad64;
+    background-color: #8b5a2b;
     color: white;
-    border-color: #5fad64;
+    border-color: #8b5a2b;
     text-align: center;
     justify-content: center;
     justify-items: center;
@@ -78,7 +95,7 @@ li:hover {
     white-space: nowrap;
     margin-top: 10px;
     margin: 2px;
-    min-width: fit-content;
+
 }
 .btn:hover {
    background-color: rgb(13,13,13); 
@@ -111,13 +128,14 @@ li:hover {
 }
 
 .btn-favorito {
-    background-color: #e1f4e6;
-    border-color: #e1f4e6;
+    background-color: #8b5a2b;
+    border-color: #8b5a2b;
     text-align: center;
     justify-content: center;
     align-items: center;
     display: flex;
-    position: absolute;
+    width: 100%;
+    min-width: fit-content;
 }
 
 
