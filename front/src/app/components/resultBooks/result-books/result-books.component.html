@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div class="container m-3">
+    <div class="container m-3" >
         <div class="row d-flex justify-content-center">
             <ul class="col-12">
                <!---  <li class="book row mb-4"> borrar cuando dejemos de hacer pruebas-->
@@ -48,6 +48,15 @@
             </ul>
         </div>
     </div>
+   @if(!allBooksLoad){
+        <div id="container" class="row text-center">
+            <button class=" btn justify-content-end" (click)="searchBooks(true)">Cargar más</button>
+    </div>
+    }@else {
+        <div id="container" class="row text-center">
+            <h5>There are no more books available </h5>
+        </div>
+    }
 <!--
     <div class="container m-3">
         <div class="row d-flex justify-content-center">

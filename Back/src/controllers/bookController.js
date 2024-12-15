@@ -3,10 +3,10 @@ import Book from '../models/bookModel.js'
 import loadApilibrary from '../services/apiExternal.js'
 
 export const fetchsaveBooks = async(req,res) => {
-    const {search} = req.query
+    const {search, page = 1} = req.query
     try {
         //console.log("esta es la busqueda desde el controller",search)
-       const books = await loadApilibrary(search);
+       const books = await loadApilibrary(search, page);
     
         const booksData = books.map((book) => {
             return{

@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login/login.component';
 import { RegisterComponent } from './components/register/register/register.component';
 import { UserprofileComponent } from './components/userprofile/userprofile/userprofile.component';
 import { accesoGuard } from './guards/acceso.guard';
+import { LocalizacionesComponent } from './components/localizaciones/localizaciones/localizaciones.component';
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
@@ -13,6 +14,7 @@ export const routes: Routes = [
     {path: 'books-list', component: BooklistComponent},
     {path:'areasocios', component: UserprofileComponent , canActivate: [accesoGuard]},
     {path: 'login', component: LoginComponent},
+    {path: 'localizaciones', component: LocalizacionesComponent},
     {path: 'register', component: RegisterComponent},
    
    /* {path: 'book/:id', component: BooklistComponent, /*canActivate:[accesoGuard]},*/

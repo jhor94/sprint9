@@ -62,9 +62,11 @@
     height: 45vh;
     padding: 0;
     border-radius: 50px;
-
-
     z-index: 1;
+}
+
+.p-banner{
+    text-align: justify;
 }
 
 @media screen and (max-width: 990px) {

@@ -1,0 +1,89 @@
+#map{
+    height: 50vh;
+    width: 100%;
+    position: relative;
+    min-width: fit-content;
+    z-index: 0;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+
+.custom-class{
+    text-align: justify;
+}
+
+#cards-container{
+    overflow-y: auto;
+    max-height: 50vh;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+h3 , p {
+    font-family: "Space Grotesk", sans-serif;
+}
+
+h1{
+    color: #8b5a2b;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.card{
+    width: 100%;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fbe9d2;
+}
+
+.card-body{
+    align-items: justify;
+    display: block;
+    position: relative;
+    transition: none;
+
+}
+
+#card-container :hover{
+    transform: translateY(-5px);
+
+}
+
+.card active{
+
+    box-shadow: none;
+
+}
+
+.card-title{
+    position: relative;
+    display: block;
+    font-size: 20px;
+    font-family: "Space Grotesk", sans-serif;
+    color: #8b5a2b;
+}
+
+.card-mapa{
+    z-index: 2;
+    justify-content: center;
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+}
+
+.img-localizacion{
+    width: auto;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#checkbox-container{
+    border-top: 2px dotted #8b5a2b;
+}
+
+

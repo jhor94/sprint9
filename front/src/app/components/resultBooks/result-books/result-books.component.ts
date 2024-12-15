@@ -19,6 +19,11 @@ export class ResultBooksComponent {
   imgUrl: string = ''
   book: Book[] = []
 
+  currentnumberPage = 1
+  allBooksLoad = false
+
+  readonly maxPages = 4
+
   constructor(private fb: FormBuilder) {
     this.searchForm = this.fb.group({
       searchQuery: ['']
@@ -29,34 +34,64 @@ export class ResultBooksComponent {
     this.searchBooks()
   }
 
-  searchBooks() {
+  searchBooks(loadMore: boolean = false) {
+
     const searchQuery = this.searchForm.get('searchQuery')?.value
     console.log("buscando libros de", searchQuery)
-    if (searchQuery) {
 
+    if(!searchQuery){
+      console.log("Termino de busqueda vacio")
+    }
+
+    if(!loadMore){
+      this.currentnumberPage = 1
       this.BookListSearch = []
-      console.log(this.BookListSearch)
-      this.bookServicio.searchtBooks(searchQuery).subscribe({
+      this.allBooksLoad = false
+    }
+      this.bookServicio.searchtBooks(searchQuery, this.currentnumberPage).subscribe({
         next: (response: any) => {
           console.log(response)
-          this.BookListSearch = response.data.map((book: Book) => {
-            return {
+          if(response && Array.isArray(response)){
+            const newBooks = response.map((book: Book) => ({
               ...book,
               subject: book.subject,
               cover: book.cover = `https://covers.openlibrary.org/b/olid/${book.cover}-L.jpg`
-            }
-          });
-          console.log(this.BookListSearch)
+          }))
+          if(newBooks.length === 0){
+            this.allBooksLoad = true
+          }else {
+            this.BookListSearch = [...this.BookListSearch, ...newBooks];
+            this.currentnumberPage++
+          }
+          }else{
+            console.log("no se encontraron datod validos", response)
+            console.log(this.BookListSearch)
+          }
         },
-        error: (err) => {
-          console.error(err)
+        error:(err)=>{
+          console.log(err, "error al cargar libros")
         }
       })
-    }
+  }
+
+  loadMoreBooks(){
+    if(this.currentnumberPage < this.maxPages){
+      this.currentnumberPage++
+      this.searchBooks()
+      console.log(this.currentnumberPage)
+      }else {
+        this.allBooksLoad = true
+        console.log("se cargaron toda la busqueda")
+      }
   }
 
 
-
+  onScroll(event: any) {
+    const element = event.target;
+    if (element.scrollTop + element.clientHeight >= element.scrollHeight) {
+      this.loadMoreBooks();
+    }
+  }
 
   addBookList(book: Book) {
     console.log(book)
