@@ -122,7 +122,7 @@ Base de Datos:
 
 Uso de Sequelize para interactuar con MySQL.
 
-Conclusiones
+# Conclusiones
 
 La aplicación "Intercambio de Libros" combina tecnologías modernas para ofrecer una experiencia intuitiva y funcional. Su enfoque en la reutilización y el intercambio promueve una práctica sostenible mientras fomenta una comunidad lectora activa. El uso de Angular en el frontend, junto con Leaflet para mapas interactivos, asegura una interfaz atractiva y eficiente. Por otro lado, el backend basado en Node.js, Express y Sequelize garantiza una gestión de datos robusta y segura. Esta aplicación es una excelente solución para los amantes de los libros que buscan compartir y descubrir nuevas lecturas.
 
