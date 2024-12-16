@@ -7,12 +7,14 @@ import { RegisterComponent } from './components/register/register/register.compo
 import { UserprofileComponent } from './components/userprofile/userprofile/userprofile.component';
 import { accesoGuard } from './guards/acceso.guard';
 import { LocalizacionesComponent } from './components/localizaciones/localizaciones/localizaciones.component';
+import { ConocenosComponent } from './components/sobrenosotros/conocenos/conocenos.component';
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
     {path: 'books', component: ResultBooksComponent},
     {path: 'books-list', component: BooklistComponent},
     {path:'areasocios', component: UserprofileComponent , canActivate: [accesoGuard]},
+    {path: 'conocenos', component: ConocenosComponent},
     {path: 'login', component: LoginComponent},
     {path: 'localizaciones', component: LocalizacionesComponent},
     {path: 'register', component: RegisterComponent},

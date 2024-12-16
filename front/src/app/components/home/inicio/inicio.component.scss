@@ -1,6 +1,6 @@
 
 .banner-2{
-    height: 45vh;
+    height: 35vh;
     background-color: #fff8ee;
     border-top-left-radius: 50px;
     border-top-right-radius: 1000px;
@@ -12,7 +12,7 @@
 
 .banner-container{
     width: 100%;
-    height: 50vh;
+    height: 40vh;
 
 }
 
@@ -58,8 +58,8 @@
 
 #banner-foto{
     width: 100%;
-    background-size: cover;
-    height: 45vh;
+    background-size: contain;
+    height: 35vh;
     padding: 0;
     border-radius: 50px;
     z-index: 1;
