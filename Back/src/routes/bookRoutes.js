@@ -13,6 +13,6 @@ router.get('/:id',authenticateToken(['user','mod','admin']),getBooks);
 //router.get('/:id', getBookId);
 router.post('/', addBook);
 router.patch('/:external_id_api', updateBook);
-router.delete('/:id', deleteBook);
+router.delete('/:id',authenticateToken(['user','mod','admin']), deleteBook);
 
 export default router;

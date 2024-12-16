@@ -93,7 +93,6 @@ export const getBooks = async (req, res)=> {
         }
         console.log('Received user_id:', req.params.id);
 
-        console.log(req.user.id_user, "respuesta del front")
         const books = await Book.findAll({
             where:{
                 user_id:req.params.id
@@ -209,8 +208,15 @@ export const deleteBook = async (req, res) => {
             return res.status(400).json({ errors: errors.array() });
         }
         const {id} = req.params
+        const user_id = req.user.id_user
+        console.log(user_id, "este es el user_id")
+        console.log('Received user_id:', req.params.id);
 
-        const deletedBook = await Book.destroy ({where : {id_book : id}})
+        const book = await Book.findOne({
+            where: { id_book: id , user_id: user_id}
+        })
+        console.log(book)
+        const deletedBook = await book.destroy()
         if(!deletedBook){
             return res.status(404).json({
                 code:-100,

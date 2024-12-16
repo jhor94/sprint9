@@ -39,8 +39,8 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-4  col-lg-4 book-action d-flex flex-column align-items-center justify-content-center">
                         <div class="d-flex flex-column align-items-center justify-content-between text-center ">
-                            <button class="btn btn-favorito d-flex justify-content-center text-center" (click)="addBookList(book)">Agregar libro <i class="bi bi-heart-fill p-1 justify-content-center"></i></button>
-                            <button class="btn btn-favorito d-flex justify-content-center text-center">Ver puntos P-book </button>
+                            <button class="btn btn-favorito d-flex justify-content-center text-center"(click)="addBookList(book)">Tengo este libro <i class="bi bi-hand-thumbs-up p-1 justify-content-center"></i></button>
+                            <button class="btn btn-favorito d-flex justify-content-center text-center" (click)="addWishBookList(book)">Quiero este libro  <i class="bi bi-heart-fill p-1 justify-content-center"></i></button>
                             
                         </div>
                     </div>
@@ -50,44 +50,21 @@
     </div>
    @if(!allBooksLoad){
         <div id="container" class="row text-center">
-            <button class=" btn justify-content-end" (click)="searchBooks(true)">Cargar más</button>
+            <div class="col-12">
+                <button class=" btn justify-content-end" (click)="searchBooks(true)">Cargar más</button>
+            </div>
     </div>
     }@else {
         <div id="container" class="row text-center">
-            <h5>There are no more books available </h5>
+
+            <h2 class="d-flex align-items-center justify-content-center  ">Encuentra los libros que te interesa </h2>
         </div>
-    }
-<!--
-    <div class="container m-3">
-        <div class="row d-flex justify-content-center">
-            <ul class="col-12">
+        <div class="row d-flex">
+            <div class="col-12 d-flex justify-content-center text align-items-center  align-items-center ">
+                <img src="../assets/bannermarron1.jpg" class="img-fluid img-login mt-3" alt="Foto de perfil">
+            </div>
     
-                <li class="book row mb-4">
-                    <div class="col-12 col-sm-12 col-md-8 col-lg-10 info-action">
-                        <div class="row">
-                            <div class="col-4 col-sm-3 col-md-3 col-lg-3 book-img">
-                                <img src="assets/portadaprueba.png" class="img-fluid  card-img rounded-start h-100" alt="portada">
-                            </div>
-                            <div class="col-8 col-sm-9 col-md-9 col-lg-9">
-                                <h5 class="card-title">La ciudad de las damas</h5>
-                                <h3 class="card-text">Autor/a: Jhorman Cadena</h3>
-                                <h3 class="card-text">Código ISBN: 1236547899552</h3>
-                                <h3 class="card-text">Nº de páginas: 298</h3>
-                                <h4 class="card-text"><small>Editorial: Salamandra</small></h4>
-                                <h4 class="card-text">Categoría literaria:</h4>
-                                <h3 class="d-flex">Coste P-book: 350 Puntos </h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-4  col-lg-2 book-action d-flex flex-column align-items-center justify-content-center">
-                        <div class="d-flex flex-column align-items-center justify-content-between text-center ">
-                            <button class="btn btn-favorito d-flex justify-content-center text-center" >Agregar libro <i class="bi bi-heart-fill p-1 tex-center justify-content-between"></i></button>
-                            <button class="btn btn-favorito d-flex justify-content-center text-center">Ver puntos P-book </button>
-                        </div>
-                    </div>
-           
-            </ul>
-        </div>
-    </div>-->
+          </div>
+    }
 
 </div>

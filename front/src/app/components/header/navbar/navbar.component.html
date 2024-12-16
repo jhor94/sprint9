@@ -1,19 +1,16 @@
 <nav class="nav-1 d-flex justify-content-between">
   <div class="container-fluid">
-      <div class="d-flex justify-content-between text-center">
-        <a class="navbar-brand d-flex justify-content-start " href="#">
-          <img src="assets/logo-marron.png" alt="logo" class="logo img-fluid">
-        </a>
+      <div class="d-flex justify-content-end text-center">
+       
         <div class="d-flex mt-3">
-          <a class="tex-white social-media"><i class="bi bi-instagram"></i></a>
-          <a class="tex-white social-media"> <i class="bi bi-facebook"></i></a>
-          <a class="tex-white social-media "> <i class="bi bi-twitter"></i></a>
-          <a class="tex-white social-media"> <i class="bi bi-info-circle-fill"></i> Ayuda</a>
+         
           @if(!isLoggedIn()){
             <button class="btn btn-sesion justify-content-center" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-person-fill"></i>Mi cuenta</button> <!--pendiente de poner en el centro cuando es repsonsive-->
           }@else {
+            <p class="d-flex justify-content-center text-center align-items-center p-book ">P-book: <i class="bi bi-coin">200</i></p>
             <button class="btn btn-sesion justify-content-center"[routerLink]="['areasocios']"><i class="bi bi-person-fill" ></i>Mi Perfil</button>
             <button class="btn btn-sesion justify-content-center"(click)="logOut()"  ><i class="bi bi-power m-1"></i>Cerrar sesión</button>
+           
           }
             
         </div>
@@ -30,7 +27,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse text-center justify-content-center " id="navbarColor02">
-        <a class="nav-link" [routerLink]="['/']"><i class="bi bi-house-door-fill m-1"></i>Inicio</a>
+      <a class="navbar-brand d-flex justify-content-start " [routerLink]="['/']">
+        <img src="assets/logo-marron.png" alt="logo" class="logo img-fluid">
+      </a>
+        <a class="nav-link" [routerLink]="['books']"><i class="bi bi-search m-1"></i>Buscar libros</a>
         <a class="nav-link"[routerLink]="['localizaciones']"><i class="bi bi-book-fill m-1"></i>Puntos de intercambio</a>
         <a class="nav-link"><i class="bi bi-chat-dots-fill m-1"></i>Conócenos</a>
       

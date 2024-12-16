@@ -33,7 +33,7 @@ export class InicioComponent {
 
       this.BookListSearch = []
       console.log(this.BookListSearch)
-      this.bookServicio.searchtBooks(searchQuery).subscribe({
+      this.bookServicio.searchBooks(searchQuery).subscribe({
         next:(response: any) => {
           console.log(response)
           this.BookListSearch = response.data

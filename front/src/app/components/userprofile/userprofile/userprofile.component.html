@@ -7,12 +7,13 @@
                     <div class="bookshelf container-fluid">
                         <h2 class="tex-center d-flex  justify-content-center "> <i class="bi bi-heart-fill p-1 justify-content-center"></i>Tu lista de deseos</h2>
                         <div class="shelf row mb-4">
-                            @for(book of listaUserBook;track book.external_id_api){
+                            @for(book of listaWishUser;track book.external_id_api){
                             <div class="book col-6 col-md-3 col-lg-3">
                                 <div class="card book-card">
                                     <div class="card-body">
                                         <h5 class="card-title">{{book.title}}</h5>
                                         <p class="card-author">{{book.author}}</p>
+                                        <button type="button" (click)="borrarLibroWish(book.id_bookWish!)" class="btn btn-secondary btn-sm ms-2">Borrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -33,6 +34,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{book.title}}</h5>
                                         <p class="card-author">{{book.author}}</p>
+                                        <button type="button" (click)="borrarLibro(book.id_book!)" class="btn btn-secondary btn-sm ms-2">Borrar</button>
                                     </div>
                                 </div>
                             </div>

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Book } from '../../../interfaces/book';
+import { WhislistService } from '../../../services/wishlist/whislist.service';
+import { wishBook } from '../../../interfaces/wishBook';
 
 @Component({
   selector: 'app-result-books',
@@ -14,7 +16,9 @@ import { Book } from '../../../interfaces/book';
 export class ResultBooksComponent {
 
   bookServicio = inject(BookService)
+  wishBookServicio = inject(WhislistService)
   BookListSearch: Book[] = []
+  BookWishListSearch: wishBook[] = []
   searchForm: FormGroup
   imgUrl: string = ''
   book: Book[] = []
@@ -48,7 +52,7 @@ export class ResultBooksComponent {
       this.BookListSearch = []
       this.allBooksLoad = false
     }
-      this.bookServicio.searchtBooks(searchQuery, this.currentnumberPage).subscribe({
+      this.bookServicio.searchBooks(searchQuery, this.currentnumberPage).subscribe({
         next: (response: any) => {
           console.log(response)
           if(response && Array.isArray(response)){
@@ -86,13 +90,6 @@ export class ResultBooksComponent {
   }
 
 
-  onScroll(event: any) {
-    const element = event.target;
-    if (element.scrollTop + element.clientHeight >= element.scrollHeight) {
-      this.loadMoreBooks();
-    }
-  }
-
   addBookList(book: Book) {
     console.log(book)
     const user = localStorage.getItem('user');
@@ -129,6 +126,45 @@ export class ResultBooksComponent {
       }
     })
     console.log(this.BookListSearch)
+    console.log("librocreado")
+  }
+
+  addWishBookList(wishbook: wishBook) {
+    console.log(wishbook)
+    const user = localStorage.getItem('user');
+    console.log(user)
+    if(!user){
+      alert('Debes estar logueado para agregar libros a tu lista')
+      return
+    }
+
+    const parsedUser = JSON.parse(user)
+    console.log(parsedUser)
+    const user_id = parsedUser.id_user
+
+    const bookData = {
+      external_id_api: wishbook.external_id_api,
+      user_id: Number(user_id),
+      title: wishbook.title,
+      author: wishbook.author,
+      isbn: wishbook.isbn,
+      number_of_pages: wishbook.number_of_pages,
+      cover: wishbook.cover,
+      publishers: wishbook.publishers,
+      subject: wishbook.subject,
+    };
+    console.log('Datos enviados al backend:', bookData);
+
+    this.wishBookServicio.addWishBook(bookData).subscribe({
+      next: (response: any) => {
+        console.log(response, "libro agregado")
+        this.BookWishListSearch.push(wishbook)
+      },
+      error: (err) => {
+        console.error(err, "error al agregar")
+      }
+    })
+    console.log(this.BookWishListSearch)
     console.log("librocreado")
   }
 }

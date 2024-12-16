@@ -1,5 +1,5 @@
-export interface Book {
-    id_book?: number,
+export interface wishBook {
+    id_bookWish?: number,
     external_id_api: string,
     user_id: number,
     title: string,

@@ -4,7 +4,7 @@ import Book from "./bookModel.js";
 import User from "./userModel.js";
 
 
-const Wishlist = sequelize.define('Wishlists',{
+const Wishlist = sequelize.define('WishlistsAsociates',{
     id_wishlist: {
         type: DataTypes.INTEGER(8).UNSIGNED,
         primaryKey: true,

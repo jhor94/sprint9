@@ -45,7 +45,7 @@ export class BookService {
       localStorage.setItem(key, JSON.stringify(cacheData));
     }
 
-  searchtBooks(searchQuery:string, page: number = 1): Observable <Book[]>{
+  searchBooks(searchQuery:string, page: number = 1): Observable <any>{
 
     const cacheKey = `${searchQuery}-page-${page}`
 
@@ -61,7 +61,7 @@ export class BookService {
     const params = new HttpParams().set('search', searchQuery).set('page',page.toString())
     console.log(params)
 
-    return this.http.get<Book[]>(`${this.backUrl}${this.apiUrl}/search`, {params}).pipe(
+    return this.http.get<any>(`${this.backUrl}${this.apiUrl}/search`, {params}).pipe(
       map((response:any)=>{
         this.setCache(cacheKey, response.data)
         console.log('datos recuperados del cache', cachedData)
@@ -81,7 +81,16 @@ export class BookService {
         )
   }
 
-   updateBook(book:Book): Observable<any>{
-    return this.http.patch<any>(`${this.backUrl}${this.apiUrl}${book.external_id_api}`, book)
-   }
+  getWishlistbyUser(user_id:number):Observable<Book[]>{
+    console.log(`${this.backUrl}${this.apiUrl}/${user_id}`)
+    return this.http.get<{data: Book[]}>(`${this.backUrl}${this.apiUrl}/${user_id}`, {withCredentials:true})
+        .pipe(
+          map(response => response.data)
+        )
+  }
+
+
+   deleteBook(id_book: number):Observable<Book[]>{
+    return this.http.delete<Book[]>(`${this.backUrl}${this.apiUrl}/${id_book}`,{withCredentials:true})
+  }
 }
