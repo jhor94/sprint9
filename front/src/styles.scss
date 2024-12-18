@@ -4,5 +4,10 @@
 
 
 
-html, body { height: 100%; }
-body { margin: 0; padding:0; box-sizing: border-box;  font-family: "Space Grotesk", sans-serif;}
+html, body { height: 100%; width: 100%; }
+body { width:100%; margin: 0; padding:0; box-sizing: border-box;  font-family: "Poppins", sans-serif;}
+
+.main-container {
+    flex: 1; /* Este contenido crecerá para ocupar el espacio disponible */
+    min-height: calc(100vh - 56px); /* Altura total menos el tamaño del navbar */
+  }

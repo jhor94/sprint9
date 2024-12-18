@@ -1,4 +1,4 @@
-import { validationResult } from 'express-validator'
+/*import { validationResult } from 'express-validator'
 import WishBook from '../models/bookwishlistModel.js'
 import loadApilibrary from '../services/apiExternal.js'
 
@@ -149,5 +149,5 @@ export const deleteWishBook = async (req, res) => {
         })
     }
 }
-
+*/
 

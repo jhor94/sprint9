@@ -1,9 +1,9 @@
-import { DataTypes } from "sequelize";
+/*import { DataTypes } from "sequelize";
 import { sequelize } from "../db.js";
 import User from "./userModel.js";
 
 
-const WishBook = sequelize.define('BooksWishes',{
+const WishBook = sequelize.define('BooksWishesOld',{
     id_bookWish: {//nada
         type: DataTypes.INTEGER(8).UNSIGNED,
         primaryKey: true,
@@ -54,4 +54,4 @@ User.hasMany(WishBook, {foreignKey: 'user_id'});
 //belogsto es de muchos a uno 
 WishBook.belongsTo(User, {foreignKey: 'user_id'});
 
-export default WishBook
+export default WishBook*/

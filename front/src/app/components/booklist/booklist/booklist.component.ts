@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { BookService } from '../../../services/books/book.service';
+import { Book } from '../../../interfaces/book';
 
 @Component({
   selector: 'app-booklist',
@@ -7,21 +9,67 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './booklist.component.scss'
 })
 export class BooklistComponent  implements OnInit {
-  shelves = [
-    [
-      { title: 'Book Title 1', author: 'Author 1', image: 'https://via.placeholder.com/100x150' },
-      { title: 'Book Title 2', author: 'Author 2', image: 'https://via.placeholder.com/100x150' },
-      { title: 'Book Title 3', author: 'Author 3', image: 'https://via.placeholder.com/100x150' }
-    ],
-    [
-      { title: 'Book Title 4', author: 'Author 4', image: 'https://via.placeholder.com/100x150' },
-      { title: 'Book Title 5', author: 'Author 5', image: 'https://via.placeholder.com/100x150' },
-      { title: 'Book Title 6', author: 'Author 6', image: 'https://via.placeholder.com/100x150' }
-    ]
-  ];
-  rotation: string = "";
+  serviceBookUser = inject(BookService)
+  listaUserBook: any[] = []
+  userString: string | null = null
+  user:any = null;
 ngOnInit(): void {
-
+  this.userString = localStorage.getItem('user')
+  if (this.userString) {
+    this.user = JSON.parse(this.userString);
+  } else {
+    console.error('User not found in localStorage');
+  }
+  this.getBookListUser()
 }
 
+getBookListUser() {
+    if(this.userString){
+      const parsedUser = JSON.parse(this.userString)
+      console.log(parsedUser)
+      const user_id = parsedUser.id_user
+      const action = "own"
+      console.log(user_id)
+
+      this.serviceBookUser.getBooksbyUser(user_id, action).subscribe((response: any[]) => {
+        console.log(response)
+        this.listaUserBook = response.map(bookUser => {
+          const book = bookUser.Book || {}
+          return {
+            book_id: book.id_book,
+            external_id_api:book.external_id_api,
+            title: book.title,
+            author: book.author,
+            publishers:book.publishers,
+            isbn:book.isbn,
+            cover:book.cover,
+          };
+        });
+  
+        console.log(this.listaUserBook, "lista de libros del usuario")
+      })
+      
+    }else{
+      console.log("no hay usuario asociados")
+    }
+  }
+
+  borrarLibro(book_id: number) {
+    if (confirm(`Estas seguro que quieres borrar este usuario?`)) {
+      if(this.userString){
+        const parsedUser = JSON.parse(this.userString)
+        console.log(parsedUser)
+        const user_id = parsedUser.id_user
+        console.log(user_id)
+        this.serviceBookUser.deleteBook(book_id, user_id).subscribe(() => {
+          this.getBookListUser();
+         // this.toastr.warning('La persona fué eliminado con exito', 'Persona eliminada')
+        })
+      }
+      } else {
+        console.log('El libro no fue eliminado', 'Persona no eliminada')
+      }
+
+
+}
 }

@@ -1,154 +1,90 @@
-.container-fluid{
-    overflow: auto;
+
+.btn-buscar{
+    border: 3px solid black;
+    color: black;
+    border-radius: 40px;
+    background-color:#6fbf7e;
+    white-space: normal;
+    margin: 10px;
 }
 
 .form-overlay {
     z-index: 0;
-    font-family: "Space Grotesk", sans-serif;
     color: rgb(26,99,99);
     font-weight: bold;
     display: flex;
-    margin-top: 20px;
-}
-.form-overlay input {
-    width: 100%;
-    border: 1px solid #8b5a2b;
-    border-radius: 5px;
-    text-align: center;
-    margin: 2px;
-}
-
-
-h1, h2 {
-    font-size: 30px;
-    color: rgba(13,13,13);
-    justify-content: justify;
-    font-family: "Space Grotesk", sans-serif;
-    padding: 0;
-    width: 100%;
-    display: flex;
-}
-
-/*.masonry-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(400px,2fr));
-    gap: 10px;
-}*/
-
-
-
-li{
-    font-family: "Space Grotesk", sans-serif;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    
-}
-.card-text{
-    font-size: 14px;
-}
-
-li:hover {
-    transform: translateY(-10px); /* Desplaza la tarjeta hacia arriba */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para el efecto de hover */
-}
-
-.info-action{
-    width: 80%;
-}
-
-.book-action{
-   font-family: "Space Grotesk", sans-serif;
-    color: rgb(13,13,13);
-    width: 20%;
-    height: auto;
-    text-align: left;
-    background-color: #efdfc2;
-    border-bottom-right-radius: 5px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: fit-content;
-}
-
-@media (max-width: 1200px) {
-    .book-action {
-        font-size: 14px; /* Reduce el tamaño de fuente en pantallas pequeñas */
-        padding: 8px 12px; /* Ajusta el padding */
-        width: 100%;
-        overflow: auto;
-    }
-}
-
-.btn{
-    background-color: #8b5a2b;
-    color: white;
-    border-color: #8b5a2b;
-    text-align: center;
-    justify-content: center;
-    justify-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    padding: 10px 15px;
-    font-size: 18px;
-    white-space: nowrap;
-    margin-top: 10px;
-    margin: 2px;
-
-}
-.btn:hover {
-   background-color: rgb(13,13,13); 
-   border-color: rgb(13,13,13);
-}
-
-/*#cards-container{
-    overflow-y: auto;
-    max-height: 50vh;
-    margin-top: 10px;
-    cursor: pointer;
-    text-align: center;
-    align-items: center;
-    max-width: fit-content;
-}*/
-
-.card-img{
-    object-fit: contain;
-    width: 100%;
-    height: auto;
     justify-content: space-between;
-    flex-direction: column;
-}
-
-.book-action h2 ,h3{
-    font-size: 18px;
-    margin-top: 20px;
-    display: flex;
-    text-align: center;
-}
-
-.btn-favorito {
-    background-color: #8b5a2b;
-    border-color: #8b5a2b;
-    text-align: center;
-    justify-content: center;
     align-items: center;
-    display: flex;
+    text-align: center;
+}
+
+
+.form-control{
+    width: 90%;
+    border: 2px solid black;
+    text-align: center;
+    border-radius: 50px;
+}
+.form-control:focus {
+    background-color: #e8ffec; 
+  }
+
+.btn-action {
+    border: 3px solid black;
+    color: rgb(255, 255, 255);
+    border-radius: 40px;
+    background-color: #000000;
+    margin: 10px;
     width: 100%;
     min-width: fit-content;
 }
+.btn-action:hover {
+    background-color: #e8ffec;
+    color: rgb(12, 12, 12);
+}
+
+.card-info{
+    border: none;
+    display: flex;
+    min-width: none;
+}
 
 
-.img-login{
-    height: 600px;
+.card-search{
+    border:3px solid black;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.div-img{
+    object-fit: cover;
+}
+
+.card-header{
+    object-fit: contain;
     width: auto;
+    overflow: hidden;
+    border-radius: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    border-radius: 30px;
-    margin: 100px;
 }
+
+
+.card-search:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  }
+
+.col-botones{
+    border-left: 3px solid black;
+}
+
+
+
+
+
+
 
 
 

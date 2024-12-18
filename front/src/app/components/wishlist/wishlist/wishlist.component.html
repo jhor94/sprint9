@@ -1,0 +1,16 @@
+<div class="row mb-4">
+    @for(book of listaWishUser;track book.external_id_api){
+    <div class="col-12 col-md-6 col-lg-2 m-3">
+        <div class="card h-100 shadow">
+            <img [src]="book.cover && book.cover !== 'https://covers.openlibrary.org/b/olid/undefined-L.jpg' 
+            ? book.cover 
+            : 'assets/foto-nodispo.png'" class="card-img-top img-fluid" alt="Portada del libro {{ book.title }}">
+            <div class="card-body">
+                <h5 class="card-title text-truncate">{{ book.title }}</h5>
+                <button type="button" (click)="borrarLibroWish(book.book_id!)"
+                    class="btn btn-borrar btn-sm ms-2">Borrar</button>
+            </div>
+        </div>
+    </div>
+    }
+</div>

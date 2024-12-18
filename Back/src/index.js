@@ -5,14 +5,15 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser'
 import { testConnection } from './db.js';
 import bookRoutes from './routes/bookRoutes.js'
-import bookWishRoutes from './routes/bookWishlistRoutes.js'
+/*import bookWishRoutes from './routes/bookWishlistRoutes.js'*/
 import exchangeRoutes from './routes/exchangeRoutes.js'
 import messageRoutes from './routes/messageRoutes.js'
-import wishlistRoutes from './routes/bookWishlistRoutes.js'
+//import wishlistRoutes from './routes/bookWishlistRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import rolesRoutes from './routes/rolesRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 import localizacionesRoutes from './routes/localizacionesRoutes.js'
+import './models/associations.js'
 dotenv.config()
 
 const app = express();
@@ -29,10 +30,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //ruteo
 app.use('/books', bookRoutes)
-app.use('/booksWish', bookWishRoutes)
+/*app.use('/booksWish', bookWishRoutes)*/
 app.use('/exchanges', exchangeRoutes)
 app.use('/messages', messageRoutes)
-app.use('/wishlists', wishlistRoutes)
+//app.use('/wishlists', wishlistRoutes)
 app.use('/users', userRoutes)
 app.use('/roles', rolesRoutes)
 app.use('/auth', authRoutes)

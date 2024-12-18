@@ -1,48 +1,50 @@
-<div class="container mt-3 text-center banner-container ">
-  <div class="row mb-3">
-    <h2 class="d-flex text-center justify-content-center"> Introduce tus datos de cuenta</h2>
-  </div>
+<div class="container-fluid">
+  <div class="row d-flex  justify-content-between  align-items-center tex-center">
+    <!-- Primer mat-card con el formulario -->
+    <div class="col-12 col-md-4 col-lg-6 ">
+      <img src="assets/registervectorial.png" class="img-fluid card-img" alt="registro">
+    </div>
+    <div class="col-12 col-md-8 col-lg-6 ">
+      <div class="card d-flex">
+        <div class="card-header d-flex align-items-center  tex-center justify-content-center">
+          <img src="assets/bro.png" alt="logo" class="img-fluid logo">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title text-center">Accede a tu cuenta </h2>
+          <form [formGroup]="formLogin" class="form-custom">
+        
+            <!-- Correo electrónico -->
+            <div class="mb-3">
+              <input type="email" class="form-control" formControlName="email" placeholder="Correo" >
+              @if(this.formLogin.controls['email'].errors?.['required'] && this.submitted &&
+              this.formLogin.controls['email'].touched){
+              <span class="error-message">The email is required or invalid.</span>
+              }
+              <br>
+              @if(emailMessage && this.formLogin.controls['email'].touched && this.submitted){
+              <span class="error-message">
+                The entered email does not exist.
+              </span>
+              }
+            </div>
 
-  <div class="container banner-2">
-    <div class="row d-flex justify-content-center align-items-center tex-center">
-      <div class="col-sm-12 col-md-12 col-lg-6 col-xxl-6">
-        <mat-card class="">
-          <mat-card-content>
-            <form [formGroup]="formLogin" class="form-custom">
-              <mat-form-field class="input-custom">
-                <mat-label>Email: </mat-label>
-                <input matInput type="email" formControlName="email">
-                @if(this.formLogin.controls['email'].errors?.['required'] && this.submitted &&
-                this.formLogin.controls['email'].touched){
-                <span class="error-message">The email is required or invalid.</span>
-                }
-                <br>
-                @if(emailMessage && this.formLogin.controls['email'].touched && this.submitted){
-                <span class="error-message">
-                  The entered email does not exist.
-                </span>
-                }
-              </mat-form-field>
-              <mat-form-field class="input-custom">
-                <mat-label>Password: </mat-label>
-                <input matInput formControlName="password" type="password" autocomplete="current-password">
-                @if(this.formLogin.controls['password'].errors?.['required'] && this.submitted &&
-                this.formLogin.controls['password'].touched){
-                <span class="error-message">The password is required.</span>
-                }
-              </mat-form-field>
+            <!-- Contraseña -->
+            <div class="mb-3">
+              <input formControlName="password" type="password" class="form-control"  placeholder="Contraseña"  autocomplete="current-password">
+              @if(this.formLogin.controls['password'].errors?.['required'] && this.submitted &&
+              this.formLogin.controls['password'].touched){
+              <span class="error-message">The password is required.</span>
+              }
+            </div>
+
+            <!-- Botón de registro -->
               <div class=" button-group flex">
-                <button class="btn" (click)="LoginIn()">Accede</button>
-                <!--  <button class="btn" (click)="register()">Registrate</button>-->
+                <button class="btn btn-accede" (click)="LoginIn()">Entrar</button>
+                <a class="nav-link" (click)="register()">Registrate</a>
               </div>
-            </form>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div class="col-12 col-md-6 col-lg-6">
-        <img src="../assets/login-photo.png" class="img-fluid  img-login mt-3" alt="Foto de perfil">
+          </form>
+        </div>
       </div>
     </div>
   </div>
- 
 </div>

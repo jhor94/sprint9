@@ -1,53 +1,70 @@
-<div class="row text-center">
-    <h2> Registrate gratis</h2>
+<div class="container-fluid">
+  <div class="row d-flex  justify-content-between  align-items-center tex-center">
+    <!-- Primer mat-card con el formulario -->
+    <div class="col-12 col-md-4 col-lg-6 ">
+      <img src="assets/registervectorial.png" class="img-fluid card-img" alt="registro">
+    </div>
+    <div class="col-12 col-md-8 col-lg-6 ">
+      <div class="card d-flex">
+        <div class="card-header d-flex align-items-center  tex-center justify-content-center">
+          <img src="assets/bro.png" alt="logo" class="img-fluid logo">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title text-center">Registrate gratis</h2>
+          <form [formGroup]="formRegister" class="form-custom">
+            <!-- Nombre -->
+            <div class="mb-3">
+              <input class="input-class" placeholder="Nombre" formControlName="name" class="form-control">
+              <ng-container
+                *ngIf="formRegister.controls['name'].errors?.['required'] && submitted && formRegister.controls['name'].touched">
+                <span class="error-message">El nombre es obligatorio</span>
+              </ng-container>
+            </div>
+
+            <!-- Correo electrónico -->
+            <div class="mb-3">
+              <input type="email" class="form-control" id="email" placeholder="Correo"
+                formControlName="email">
+              <ng-container
+                *ngIf="formRegister.controls['email'].errors?.['required'] && submitted && formRegister.controls['email'].touched">
+                <span class="error-message">El email es obligatorio o inválido</span>
+              </ng-container>
+              <ng-container
+                *ngIf="errorMessage && formRegister.controls['email'].touched && submitted && formRegister.controls['email'].errors?.['email']">
+                <span class="error-message">El email ya existe o es inválido</span>
+              </ng-container>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="mb-3">
+
+              <input placeholder="Contraseña" class="fomr-control" formControlName="password"
+                type="password" autocomplete="current-password" class="form-control" >
+              <ng-container
+                *ngIf="formRegister.controls['password'].errors?.['required'] && submitted && formRegister.controls['password'].touched">
+                <span class="error-message">La contraseña es obligatoria</span>
+              </ng-container>
+            </div>
+
+            <!-- Botón de registro -->
+            <div class="button-group flex">
+              <button type="button" class="btn btn-accede" (click)="registerIn()">Registrarse</button>
+              <a type="button" class="nav-link" [routerLink]="['/']">Volver</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div card class="col-12 col-md-4 col-lg-4">
+
+
+
+        <!-- Mostrar mensajes de error o éxito -->
+        @if(successMessage){
+        <mat-error class="success-message">{{ successMessage }}</mat-error>
+        }
+
+
+      </div>
+    </div>
   </div>
-  <div class="card-container text-center justify-content-center align-items-center">
-    <div class="row">
-        <mat-card class="col-lg-6">
-            <mat-card-content >
-              <form [formGroup]="formRegister" class="form-custom">
-                <mat-form-field class="input-custom">
-                  <mat-label>Name: </mat-label>
-                  <input matInput placeholder="" formControlName="name">
-                  @if(this.formRegister.controls['name'].errors?.['required'] && this.submitted && this.formRegister.controls['name'].touched){
-                    <span class="error-message" >El nombre es obligatorio</span>
-                  }
-                  <br>
-                </mat-form-field>
-                <mat-form-field class="input-custom">
-                  <mat-label>Email: </mat-label>
-                  <input matInput placeholder="" type="email" formControlName="email">
-                  @if(this.formRegister.controls['email'].errors?.['required'] && this.submitted && this.formRegister.controls['email'].touched){
-                    <span class="error-message" >The email is required or invalid</span>
-                  }
-                  <br>
-                  @if(errorMessage && this.formRegister.controls['email'].touched && this.submitted && this.formRegister.controls['email'].errors?.['email']){
-                    <span class="error-message" >The email already exists or is invalid </span>
-                    }
-                </mat-form-field>
-               
-                <mat-form-field class="input-custom">
-                  <mat-label>Password: </mat-label>
-                  <input matInput formControlName="password" type="password" autocomplete="current-password">
-                  @if(this.formRegister.controls['password'].errors?.['required'] && this.submitted && this.formRegister.controls['password'].touched){
-                    <span class="error-message" >The password is required</span>
-                  }
-                </mat-form-field>
-                <div class="button-group flex">
-                  <button  type="button" class="btn" (click)="registerIn()">Registrarse</button>
-                  <button  type="button" class="btn" [routerLink]="['/']">Volver</button>
-                </div>
-              </form>
-        
-              <!-- Mostrar mensajes de error o éxito -->
-            
-              @if(successMessage){
-              <mat-error class="success-message">{{ successMessage }}</mat-error>
-              }
-            </mat-card-content>
-          </mat-card>
-          <mat-card class="col-lg-6">
-              <img src="assets/registervectorial.png" class="img-fluid card-img" alt="registro">
-          </mat-card>
-    </div>  
-  </div>
+</div>

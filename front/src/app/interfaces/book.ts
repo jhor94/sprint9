@@ -10,4 +10,5 @@ export interface Book {
     publishers: string,
     subject:string,
     favoite?: boolean,
+    action?:string
 }

@@ -1,0 +1,34 @@
+.card{
+  border-radius: 20px; /* Bordes redondeados para las tarjetas */
+  overflow: hidden; /* Evitar que el contenido sobresalga */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid black;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Efecto de zoom suave al pasar el cursor */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+.card-img-top {
+  height: 400px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Asegurar que las imágenes se ajusten correctamente */
+  background-color: #cdfad6;
+}
+
+.btn-borrar{
+  border: 3px solid black;
+  color: black;
+  border-radius: 40px;
+  background-color:#cdfad6
+}
+
+.btn-borrar:hover{
+  background-color:#000000 ;
+  color: rgb(255, 255, 255);
+}
+
+.card-body{
+  border-top: 3px solid black;
+}
+

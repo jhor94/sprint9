@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Book } from '../../../interfaces/book';
-import { WhislistService } from '../../../services/wishlist/whislist.service';
-import { wishBook } from '../../../interfaces/wishBook';
+
 
 @Component({
   selector: 'app-result-books',
@@ -16,9 +15,7 @@ import { wishBook } from '../../../interfaces/wishBook';
 export class ResultBooksComponent {
 
   bookServicio = inject(BookService)
-  wishBookServicio = inject(WhislistService)
   BookListSearch: Book[] = []
-  BookWishListSearch: wishBook[] = []
   searchForm: FormGroup
   imgUrl: string = ''
   book: Book[] = []
@@ -113,24 +110,40 @@ export class ResultBooksComponent {
       cover: book.cover,
       publishers: book.publishers,
       subject: book.subject,
+      action: 'own'
     };
     console.log('Datos enviados al backend:', bookData);
+    console.log("contenido de la BookListSearch", this.BookListSearch)
+
+    const isBookInList = this.BookListSearch.some(b => 
+      b.external_id_api === book.external_id_api && b.user_id === bookData.user_id && b.action === bookData.action);
+    if (isBookInList) {
+      alert('Este libro ya está en tu lista.');
+      return;
+    }
 
     this.bookServicio.addBook(bookData).subscribe({
       next: (response: any) => {
         console.log(response, "libro agregado")
         this.BookListSearch.push(book)
+        alert("Agregado con exito")
       },
       error: (err) => {
         console.error(err, "error al agregar")
+        if (err.status === 400 && err.error.code === -101) {
+          alert("Libro duplicado");  // Mostrar mensaje de error del backend
+        } else {
+          console.error('Error al agregar el libro:', err);
+          alert('Ha ocurrido un error al agregar el libro.');
+        }
       }
     })
     console.log(this.BookListSearch)
     console.log("librocreado")
   }
 
-  addWishBookList(wishbook: wishBook) {
-    console.log(wishbook)
+  addWishBookList(book: Book) {
+    console.log(book)
     const user = localStorage.getItem('user');
     console.log(user)
     if(!user){
@@ -141,30 +154,45 @@ export class ResultBooksComponent {
     const parsedUser = JSON.parse(user)
     console.log(parsedUser)
     const user_id = parsedUser.id_user
+    console.log(this.BookListSearch, "lista actual")
 
     const bookData = {
-      external_id_api: wishbook.external_id_api,
+      external_id_api: book.external_id_api,
       user_id: Number(user_id),
-      title: wishbook.title,
-      author: wishbook.author,
-      isbn: wishbook.isbn,
-      number_of_pages: wishbook.number_of_pages,
-      cover: wishbook.cover,
-      publishers: wishbook.publishers,
-      subject: wishbook.subject,
+      title: book.title,
+      author: book.author,
+      isbn: book.isbn,
+      number_of_pages: book.number_of_pages,
+      cover: book.cover,
+      publishers: book.publishers,
+      subject: book.subject,
+      action: 'wish'
     };
     console.log('Datos enviados al backend:', bookData);
+    const isBookInList = this.BookListSearch.some(b => 
+      b.external_id_api === book.external_id_api && b.user_id === bookData.user_id && b.action === bookData.action);
+    if (isBookInList) {
+      alert('Este libro ya está en tu lista.');
+      return;
+    }
 
-    this.wishBookServicio.addWishBook(bookData).subscribe({
+    this.bookServicio.addBook(bookData).subscribe({
       next: (response: any) => {
         console.log(response, "libro agregado")
-        this.BookWishListSearch.push(wishbook)
+        this.BookListSearch.push(book)
+        alert("Agregado con exito")
       },
       error: (err) => {
         console.error(err, "error al agregar")
+        if (err.status === 400 && err.error.code === -101) {
+          alert("Libro duplicado");  // Mostrar mensaje de error del backend
+        } else {
+          console.error('Error al agregar el libro:', err);
+          alert('Ha ocurrido un error al agregar el libro.');
+        }
       }
     })
-    console.log(this.BookWishListSearch)
+    console.log(this.BookListSearch)
     console.log("librocreado")
   }
 }

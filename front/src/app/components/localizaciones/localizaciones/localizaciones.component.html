@@ -1,54 +1,57 @@
-<div class="container mt-3 text-center">
-    <div class="row mb-3">
-        <h1 class="text-center mb-3">Puntos de intercambio de libros</h1>
+<div class="container-fluid text-center">
+    <div class="row ">
+        <h1 class="text-center banner">Puntos de intercambio de libros</h1>
     </div>
-</div>
-<div>
-    <div class="container  container-info-localizacion ">
-        <div class="row d-flex justify-content-center align-items-center tex-center ">
-                    <div class=" col-12 col-md-6 col-lg-6 ">
-                        <p class=" custom-class d-flex " >Imagina un espacio donde el intercambio de libros se convierte en una experiencia accesible y cercana para todos. En nuestra ciudad, hemos creado una red de puntos de encuentro locales para que puedas dejar tus libros en el lugar más conveniente y recoger el libro que desees intercambiar. Estos lugares son bibliotecas, tiendas de barrio y librerías asociadas a nuestra red, y están disponibles para ti para facilitar este intercambio.</p>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-6">
-                        <img src="../assets/cuate-min.png" class="img-fluid  img-localizacion mt-3" alt="Foto de perfil">
-                    </div>
-        </div>
 
-        <div id="checkbox-container" class="card-mapa">
-            <label>
-                <input type="checkbox" (change)="cambioCategoria($event, 'Papelería')" [checked]="isCategoriaChecked('Centro Comercial')" class=" checkbox m-3"/>
-                Papelería
-            </label>
-            <br>
-            <label>
-                <input type="checkbox" (change)="cambioCategoria($event, 'Biblioteca')" [checked]="isCategoriaChecked('Hospital')" class="checkbox m-3" />
-                Biblioteca
-            </label>
-            <br>
-            <label>
-                <input type="checkbox" (change)="cambioCategoria($event, 'Tienda de barrio')"[checked]="isCategoriaChecked('Parque')" class="checkbox m-3" />
-                Tienda de barrio
-            </label>
-            <br>
+    <div class="row d-flex justify-content-center align-items-center tex-center ">
+        <div class=" col-12 col-md-6 col-lg-6 ">
+            <p class=" custom-class d-flex ">Imagina un espacio donde el intercambio de libros se convierte en una
+                experiencia accesible y cercana para todos. En nuestra ciudad, hemos creado una red de puntos de
+                encuentro locales para que puedas dejar tus libros en el lugar más conveniente y recoger el libro
+                que desees intercambiar. Estos lugares son bibliotecas, tiendas de barrio y librerías asociadas a
+                nuestra red, y están disponibles para ti para facilitar este intercambio.</p>
         </div>
-        <div class="container ">
-            <div class="row">
-                <div class="col-md-8 mapa">
-                    <div id="map"></div>
-                </div>
-                <div id="cards-container" class="col-md-4">
-                    @for(localizacion of localizacionesFiltradas; track localizacion.nombre){
-                    <div class="card mb-3" (click)="centrarMapa(localizacion)">
-                        <div class="card-body">
-                            <h3 class="card-title text-center">{{localizacion.nombre}}</h3>
-                        </div>
+        <div class="col-12 col-md-6 col-lg-6">
+            <img src="../assets/reading_girl.jpg" class="img-fluid  img-localizacion mt-3" alt="Foto de perfil">
+        </div>
+    </div>
+
+    <div id="checkbox-container" class="card-mapa">
+        <label>
+            <input type="checkbox" (change)="cambioCategoria($event, 'Papelería')"
+                [checked]="isCategoriaChecked('Centro Comercial')" class=" checkbox m-3" />
+            Papelería
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" (change)="cambioCategoria($event, 'Biblioteca')"
+                [checked]="isCategoriaChecked('Hospital')" class="checkbox m-3" />
+            Biblioteca
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" (change)="cambioCategoria($event, 'Tienda de barrio')"
+                [checked]="isCategoriaChecked('Parque')" class="checkbox m-3" />
+            Tienda de barrio
+        </label>
+        <br>
+    </div>
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-8 mapa">
+                <div id="map"></div>
+            </div>
+            <div id="cards-container" class="col-md-4">
+                @for(localizacion of localizacionesFiltradas; track localizacion.nombre){
+                <div class="card mb-3" (click)="centrarMapa(localizacion)">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">{{localizacion.nombre}}</h3>
                     </div>
-                    }
                 </div>
-                <div>
-                </div>
+                }
+            </div>
+            <div>
             </div>
         </div>
-        </div>
-  
+    </div>
 </div>

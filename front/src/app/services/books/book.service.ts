@@ -73,9 +73,9 @@ export class BookService {
    addBook(book:Book): Observable<void>{
     return this.http.post<void>(`${this.backUrl}${this.apiUrl}`, book)
    }
-   getBooksbyUser(user_id:number):Observable<Book[]>{
+   getBooksbyUser(user_id:number, action:string):Observable<Book[]>{
     console.log(`${this.backUrl}${this.apiUrl}/${user_id}`)
-    return this.http.get<{data: Book[]}>(`${this.backUrl}${this.apiUrl}/${user_id}`, {withCredentials:true})
+    return this.http.get<{data: Book[]}>(`${this.backUrl}${this.apiUrl}/${user_id}?action=${action}`, {withCredentials:true})
         .pipe(
           map(response => response.data)
         )
@@ -90,7 +90,7 @@ export class BookService {
   }
 
 
-   deleteBook(id_book: number):Observable<Book[]>{
-    return this.http.delete<Book[]>(`${this.backUrl}${this.apiUrl}/${id_book}`,{withCredentials:true})
+   deleteBook(id_book: number, user_id:number):Observable<Book[]>{
+    return this.http.delete<Book[]>(`${this.backUrl}${this.apiUrl}/${id_book}/?user_id=${user_id}`,{withCredentials:true})
   }
 }

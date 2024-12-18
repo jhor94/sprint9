@@ -1,23 +1,46 @@
-.form-container {
-    position: static;
+footer{
+    background-color: #6fbf7e;
+    bottom: 0;
     width: 100%;
-    background-color: #8b5a2b;
-    color: #fbe9d2;
+    border-top: 3px solid black;
+}
+
+.form-container {
+    width: 100%;
+    background-color: #6fbf7e;;
+    color: #0f0f0f;
     font-weight: bold;
-    font-family: "Space Grotesk", sans-serif;
     padding-top: 10px;
+    position:sticky;
 }
 
 .btn-suscribe{
-    background-color: #fbe9d2;
-    color: #8b5a2b;
+    border: 3px solid black;
+    color: rgb(255, 255, 255);
+    border-radius: 40px;
+    background-color: #000000;
+}
+
+.btn-suscribe:hover{
+    background-color: #e8ffec;
+    color: rgb(0, 0, 0);
 }
 
 .copyright{
-    background-color: #8b5a2b;
-    color: #fbe9d2;
+    background-color: #6fbf7e;;
+    color: #000000;
     font-weight: bold;
 }
+
+.form-control{
+    width: 100%;
+    border: 2px solid black;
+    text-align: center;
+    border-radius: 50px;
+}
+.form-control:focus {
+    background-color: #fdf6ec; /* Fondo cuando el input tiene foco */
+  }
 
 
 
@@ -26,8 +49,8 @@
     padding: 5px;
     margin-top: 15px;
     min-width: fit-content;
-    color: #fbe9d2;
+    color: #000000;
     justify-content: center;
     margin: 20px;
-    background-color: #8b5a2b;
+    background-color: #6fbf7e;;
 }

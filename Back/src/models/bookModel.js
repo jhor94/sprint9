@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db.js";
-import User from "./userModel.js";
+import BooksUsers from "./booksUsersModel.js";
 
 
 const Book = sequelize.define('Books',{
@@ -12,9 +12,6 @@ const Book = sequelize.define('Books',{
     external_id_api:{ //search
         type: DataTypes.STRING(255),
         allowNull: false
-    },
-    user_id:{//nada
-        type:DataTypes.INTEGER(8).UNSIGNED
     },
     title:{//search
         type: DataTypes.STRING(255),
@@ -44,14 +41,16 @@ const Book = sequelize.define('Books',{
     },
 },
 {   
-    indexes:[{unique: true, fields:['external_id_api', 'user_id']}],
+    indexes:[{unique: true, fields:['external_id_api']}],
     timestamps: true,
     updatedAt: 'updated_at',
     createdAt: 'created_at'
 });
 //hasmnay relacion de 1 a muchos en este caso un usuario muchos libros
-User.hasMany(Book, {foreignKey: 'user_id'});
+//User.hasMany(Book, {foreignKey: 'user_id'});
 //belogsto es de muchos a uno 
-Book.belongsTo(User, {foreignKey: 'user_id'});
+//Book.belongsTo(User, {foreignKey: 'user_id'});
+//Book.hasMany(BooksUsers, { foreignKey: 'book_id' });
+
 
 export default Book

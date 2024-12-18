@@ -1,71 +1,34 @@
-.bookshelf {
-    background: linear-gradient(to bottom, #8b5a2b, #8b5a2b); /* Fondo similar a madera */
-    padding: 10px;
-    border: 10px solid #8b5a2b; /* Marco de la estantería */
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
-  
-  .shelf {
-    display: flex;
-    align-items: flex-end; /* Los libros "se paran" al fondo */
-    padding: 5px 0;
-    border-bottom: 3px solid #8b5a2b; /* Línea que simula el estante */
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: #d5c6b3 ;
-    border-radius: 5px;
-  }
-  .book{
-    margin: auto;
-  }
+.card{
+  border-radius: 20px; /* Bordes redondeados para las tarjetas */
+  overflow: hidden; /* Evitar que el contenido sobresalga */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid black;
+}
 
-  .book-card {
-    background-color: #40774a; /*#a17751*/
-    border: none;
-    width: 70%;
-    height: 200px;
-    text-align: center;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
-    margin: 10px;
-    border-bottom: 5px solid #dbd3cc; /* Marco de la estantería */
-    border-left: 5px solid #4d3016; /* Marco de la estantería */
-    color:white;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+.card:hover {
+  transform: scale(1.05); /* Efecto de zoom suave al pasar el cursor */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
 
-  }
+.card-img-top {
+  height: 400px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Asegurar que las imágenes se ajusten correctamente */
+  background-color: #cdfad6;
+}
 
-  .book-card img {
-    max-height: 120px;
-    object-fit: cover;
-    margin: 0 auto;
-    padding: 5px;
-    border-radius: 3px;
-  }
-  
-  .book-card .card-title {
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    text-align: center;
-    white-space: normal;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .book-card .card-author {
-    font-size: 0.7rem;
-    color: #efdfc2;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    text-decoration: underline;
-    white-space: normal;
-  }
-  
+.btn-borrar{
+  border: 3px solid black;
+  color: black;
+  border-radius: 40px;
+  background-color:#cdfad6
+}
+
+.btn-borrar:hover{
+  background-color:#000000 ;
+  color: rgb(255, 255, 255);
+}
+
+.card-body{
+  border-top: 3px solid black;
+}
+

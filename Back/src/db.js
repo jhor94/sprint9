@@ -13,6 +13,7 @@ const sequelize = new Sequelize (
     }
 );
 
+
 const syncroModel = async () =>{
     try{
     await sequelize.sync({ force: false }).then(() => {
@@ -25,8 +26,8 @@ const syncroModel = async () =>{
 
 const testConnection = async ()=>{
     try {
-        await sequelize.authenticate();
         await syncroModel()
+        await sequelize.authenticate();   
     } catch (error) {
         console.error('Error al conectar con la base de datos',error)
     }
