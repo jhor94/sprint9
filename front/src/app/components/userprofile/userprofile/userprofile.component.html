@@ -1,73 +1,74 @@
-<div class="container-fluid h-100">
-    <div class="row d-flex">
-            
-   
-        <!-- Contenido principal -->
-        <div class="col-12 col-md-10 col-lg-10">
-            <div class="container-fluid tab-content mt-4">
-                @if(activeTab === 'inicio'){
-                <div class="tab-pane fade show active">
-                    <h2>Bienvenido a Inicio</h2>
-                    <p>esto es el inicio y aqui no se ve lo de los libros</p>
-                </div>
-                }
-                @if(activeTab === 'libros'){
-                <div class="tab-pane fade show active">
-                    <h2 class="subtitle">Mi Biblioteca</h2>
-                    <app-booklist></app-booklist>
+<div class="container-fluid justify-content-center ">
+    <div class="row">
+        <ul class="nav nav-tabs  nav-fill" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+                    role="tab" aria-controls="home-tab-pane" aria-selected="true"
+                    [class.active]="activeTab === 'inicio'" (click)="setActiveTab('inicio')">
+                    <i class="bi bi-house-door-fill m-1"></i> Inicio
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+                    role="tab" aria-controls="home-tab-pane" aria-selected="false"
+                    [class.active]="activeTab === 'libros'" (click)="setActiveTab('libros')">
+                    <i class="bi bi-book-fill m-1"></i> Mis Libros
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+                    role="tab" aria-controls="home-tab-pane" aria-selected="false" (click)="setActiveTab('deseos')">
+                    <i class="bi bi-heart-fill m-1"></i> Lista de Deseos
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+                    role="tab" aria-controls="home-tab-pane" aria-selected="false" (click)="setActiveTab('perfil')">
+                    <i class="bi bi-person-fill m-1"></i> Mis amigos
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+                    role="tab" aria-controls="home-tab-pane" aria-selected="false"
+                    (click)="setActiveTab('configuracion')">
+                    <i class="bi bi-gear-fill m-1"></i> Configuración
+                </a>
+            </li>
+        </ul>
+    </div>
 
-                </div>
-                }
-                @if(activeTab === 'deseos'){
-                <div class="tab-pane fade show active">
-                    <h2 class="subtitle">Mi lista de deseos</h2>
-                    <app-wishlist></app-wishlist>
-                </div>
-                }
-                @if(activeTab === 'perfil'){
-                <div class="tab-pane fade show active">
-                    <h2>Lista de Perfil</h2>
-                </div>
-                }
-                @if(activeTab === 'configuracion'){
-                <div class="tab-pane fade show active">
-                    <h2>Configuración</h2>
-                </div>
-                }
-            </div>
+
+    <div class="container-fluid  py-3" id="tablist">
+        @if(activeTab === 'inicio'){
+        <div class="tab-pane fade show active container" id="home-tab-pane" role="tabpanel"
+            aria-labelledby="home-tab" tabindex="0">
+            <app-welcome></app-welcome>
         </div>
-        <nav class="col-12 col-md-2 col-lg-2 text-white sidebar">
-            <div class="text-center">
-                <img src="../assets/fotoperfil.jpg" class="img-fluid rounded-circle mt-3" alt="Foto de perfil">
-                <h2 class="mt-2 name-profile">{{ user.name }}</h2>
-            </div>
-            <h4 class="text-center titulo-menu">Mi cuenta</h4>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <button class="btn btn-sidebar" (click)="setActiveTab('inicio')">
-                        <i class="bi bi-house-door-fill m-1"></i> Inicio
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-sidebar" (click)="setActiveTab('libros')">
-                        <i class="bi bi-book-fill m-1"></i> Mis Libros
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-sidebar" (click)="setActiveTab('deseos')">
-                        <i class="bi bi-heart-fill m-1"></i> Lista de Deseos
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-sidebar" (click)="setActiveTab('perfil')">
-                        <i class="bi bi-person-fill m-1"></i> Mi Perfil
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-sidebar" (click)="setActiveTab('configuracion')">
-                        <i class="bi bi-gear-fill m-1"></i> Configuración
-                    </button>
-                </li>
-            </ul>
-        </nav>
-</div>
+        }
+        @if(activeTab === 'libros'){
+        <div class="tab-pane fade show active container-fluid  " id="home-tab-pane" role="tabpanel"
+            aria-labelledby="home-tab" tabindex="0">
+            <app-booklist></app-booklist>
+
+        </div>
+        }
+        @if(activeTab === 'deseos'){
+        <div class="tab-pane fade show active container-fluid" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+            tabindex="0">
+
+            <app-wishlist></app-wishlist>
+        </div>
+        }
+        @if(activeTab === 'perfil'){
+        <div class="tab-pane fade show active container-fluid " id="home-tab-pane" role="tabpanel"
+            aria-labelledby="home-tab" tabindex="0">
+            <app-list-friends></app-list-friends>
+        </div>
+        }
+        @if(activeTab === 'configuracion'){
+        <div class="tab-pane fade show active  container-fluid " id="home-tab-pane" role="tabpanel"
+            aria-labelledby="home-tab" tabindex="0">
+            <app-settings-user></app-settings-user>
+        </div>
+        }
+    </div>

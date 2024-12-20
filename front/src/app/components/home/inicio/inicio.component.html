@@ -1,19 +1,29 @@
-<div class="container-fluid py-5 ">
+<div class="container-fluid container-banner  py-5 ">
     <div class="row banner align-items-center">
       <!-- Columna de texto -->
-      <div class="col-lg-6 mb-4 mb-lg-0 ">
+      <div class="col-md-6 col-lg-6 mb-4 mb-lg-0 ">
         <h1 class="display-4 fw-bold">Bienvenido a <span>SWAPPTALES</span></h1>
         <p class="lead ">
             Descubre un universo de historias y conocimiento, donde los libros cambian de manos y las aventuras nunca terminan. Únete a nuestra comunidad de lectores apasionados y comienza a intercambiar libros hoy mismo. ¡Tu próxima lectura está a solo un intercambio de distancia!
         </p>
-        <button href="#" class="btn btn-buscar" [routerLink]="['/books']">Empieza a buscar </button> 
+        <button href="#" class="btn btn-buscar" [routerLink]="['/search']">Empieza a buscar </button> 
       </div>
       
       <!-- Columna de imágenes -->
-      <div class="col-lg-6">
+      <div class="col-md-6 col-lg-6">
         <div class="row">
           <div class="col-12 d-flex">
-            <img src="assets/green_garden.jpg" class="img-fluid  custom-border-bottom" alt="Imagen 2">
+            @for(book of top3BooksOwn; track book.external_id_api){
+              <div class="card h-100 shadow m-2">
+                <img [src]="book.cover && book.cover !== 'https://covers.openlibrary.org/b/olid/undefined-L.jpg' 
+                ? book.cover 
+                : 'assets/foto-nodispo.png'"class="card-img-top img-fluid" alt="Portada libro 1">
+                <div class="card-body">
+                  <h5 class="card-title">{{ book.title }}</h5>
+                  <p class="card-text"> {{book.author}}</p>
+                </div>
+              </div>
+           }
           </div>
         </div>
       </div>
@@ -21,56 +31,24 @@
 </div>
   
 <div class="container my-5">
-    <div  id="favoritos" class="row  d-flex tex-center justify-content-center ">
-        <div class="col-12 mt-3">
-            <h2 class="subtitle">Descubre los libros favoritos de nuestra comunidad</h2>
-        </div> 
-    </div>
     <div class="row g-4">
       <!-- Card 1 -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card h-100 shadow">
-          <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="Portada libro 1">
-          <div class="card-body">
-            <h5 class="card-title">Título del Libro 1</h5>
-            <p class="card-text">Descripción breve del libro 1. Una sinopsis interesante para atraer lectores.</p>
-          </div>
-        </div>
+      <div class="col-12 col-md-6 col-lg-6">
+      <img src="assets/green_garden.jpg" class="img-fluid  custom-border-bottom" alt="Imagen 2">
       </div>
-      <!-- Card 2 -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card h-100 shadow">
-          <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="Portada libro 2">
-          <div class="card-body">
-            <h5 class="card-title">Título del Libro 2</h5>
-            <p class="card-text">Descripción breve del libro 2. Una sinopsis interesante para atraer lectores.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card h-100 shadow">
-          <img src="assets/portadaprueba.png" class="card-img-top img-fluid" alt="Portada libro 3">
-          <div class="card-body">
-            <h5 class="card-title">Título del Libro 3</h5>
-            <p class="card-text">Descripción breve del libro 3. Una sinopsis interesante para atraer lectores.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="col-12 col-md-6 col-lg-3">
+      
+      <div class="col-12 col-md-6 col-lg-6">
         <div class="h-100  cta-card">
           <div class="card-body d-flex flex-column justify-content-center text-cente align-items-center  ">
-            <h5 class="card-title">¿Quieres más libros?</h5>
-            <p class="card-text">Explora nuestra colección completa.</p>
-            <a href="#" class="btn btn-buscar mt-3">Ver más</a>
+            <h2 class="subtitle">Descubre los libros favoritos de nuestra comunidad</h2>
+            <h3 class="card-text"><a href="#" class="btn btn-buscar mt-3">Ver más</a></h3>    
           </div>
         </div>
       </div>
     </div>
 </div>
 
-<div class="container-fluid  register my-5">
+<div class="container register my-5">
     <div class="row align-items-center g-4">
         <h2 class="mb-4  d-flex justify-content-center">¡Conoce nuestra comunidad!</h2>
     </div>

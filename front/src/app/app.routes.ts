@@ -8,16 +8,19 @@ import { UserprofileComponent } from './components/userprofile/userprofile/userp
 import { accesoGuard } from './guards/acceso.guard';
 import { LocalizacionesComponent } from './components/localizaciones/localizaciones/localizaciones.component';
 import { ConocenosComponent } from './components/sobrenosotros/conocenos/conocenos.component';
+import { WishlistComponent } from './components/wishlist/wishlist/wishlist.component';
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
-    {path: 'books', component: ResultBooksComponent},
-    {path: 'books-list', component: BooklistComponent},
-    {path:'areasocios', component: UserprofileComponent , canActivate: [accesoGuard]},
-    {path: 'conocenos', component: ConocenosComponent},
+    {path: 'search', component: ResultBooksComponent},
+    {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
     {path: 'localizaciones', component: LocalizacionesComponent},
-    {path: 'register', component: RegisterComponent},
+    {path:'areasocios', component: UserprofileComponent , canActivate: [accesoGuard],},
+    {path: 'areasocios/bookWish', component: WishlistComponent, canActivate: [accesoGuard]},
+    {path: 'areasocios/books-list', component: BooklistComponent, canActivate: [accesoGuard]},
+    {path: 'conocenos', component: ConocenosComponent},
+
    
    /* {path: 'book/:id', component: BooklistComponent, /*canActivate:[accesoGuard]},*/
 

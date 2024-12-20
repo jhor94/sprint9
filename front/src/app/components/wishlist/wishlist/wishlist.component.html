@@ -1,7 +1,11 @@
-<div class="row mb-4">
+
+<div class="row  d-flex  justify-content-center   mb-4">
+    <div class="col-12 col-md-12 col-lg-12">
+        <h2 class="subtitle d-flex text-center ">Mi lista de deseos</h2>
+    </div>
     @for(book of listaWishUser;track book.external_id_api){
-    <div class="col-12 col-md-6 col-lg-2 m-3">
-        <div class="card h-100 shadow">
+    <div class="col-12 col-md-6 col-lg-2 text-center ">
+        <div class="card shadow  d-flex align-items-center  text-center justify-content-center m-2">
             <img [src]="book.cover && book.cover !== 'https://covers.openlibrary.org/b/olid/undefined-L.jpg' 
             ? book.cover 
             : 'assets/foto-nodispo.png'" class="card-img-top img-fluid" alt="Portada del libro {{ book.title }}">

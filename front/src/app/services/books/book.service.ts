@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { map, Observable, of } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { Book } from '../../interfaces/book';
 
 @Injectable({
@@ -93,4 +93,11 @@ export class BookService {
    deleteBook(id_book: number, user_id:number):Observable<Book[]>{
     return this.http.delete<Book[]>(`${this.backUrl}${this.apiUrl}/${id_book}/?user_id=${user_id}`,{withCredentials:true})
   }
+
+  getOwnTop():Observable<Book[]>{
+    return this.http.get<{data:Book[]}>(`${this.backUrl}${this.apiUrl}/owntop`)
+    .pipe(
+      map(response => response.data)
+    )}
+
 }

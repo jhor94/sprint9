@@ -1,18 +1,13 @@
-.container-fluid{
-    margin-bottom: 20px;
-}
+
 
 .banner{
     margin-top: 5vh;
 }
 
 #map{
-    height: 50vh;
+    height: 500px;
     width: 100%;
     position: relative;
-    min-width: fit-content;
-    z-index: 0;
-    font-family: "Space Grotesk", sans-serif;
     border: 3px solid black;
     border-radius: 10px;
 }
@@ -24,7 +19,8 @@
 
 #cards-container{
     overflow-y: auto;
-    max-height: 50vh;
+    max-height: 500px;
+    position: relative;
     margin-top: 10px;
     cursor: pointer;
 }

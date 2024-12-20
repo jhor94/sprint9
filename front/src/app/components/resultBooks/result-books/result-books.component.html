@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
     <div class="row m-4">
         <div id="" class="col-12 col-md-6 col-lg-6">
@@ -5,7 +6,7 @@
             <p class="d-flex">Puesdes marcar como favorito el libro que te gusta o cambiarlo por puntos P-Book</p>
         </div>
         <div id="" class="col-12 col-mg-6 col-lg-6 text-center">
-            <form action="" [formGroup]="searchForm" class="form-overlay">
+            <form action="" [formGroup]="searchForm" class="form-overlay" (ngSubmit)="searchBooks()">
                 <input class="form-control" placeholder="Busca por título, Autor o ISBN" type="text"
                     formControlName="searchQuery">
                 <button class="btn btn-buscar" (click)="searchBooks()"><i class="bi bi-search"></i>Buscar</button>
@@ -45,6 +46,17 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-3 col-lg-3 d-flex col-botones ">
+                            @if(!isLoggedIn()){
+                                <div class="card-body  d-flex flex-column align-items-center justify-content-center">
+                                    <h2 class="d-flex text-center">Debes tener cuenta para agregar libros</h2>
+                                    <div class="col-6">
+                                        <button class="btn btn-action" [routerLink]="['/login']">Acceder a mi cuenta </button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button class="btn btn-action" [routerLink]="['/register']"> Quiero registrarme</button>
+                                    </div>
+                                </div>
+                            }@else {
                             <div class="card-body  d-flex flex-column align-items-center justify-content-center">
                                 <div class="col-6">
                                     <button class="btn btn-action" (click)="addBookList(book)">Tengo este libro <i
@@ -55,6 +67,7 @@
                                             class="bi bi-heart-fill p-1 justify-content-center"></i></button>
                                 </div>
                             </div>
+                        }
                         </div>
                     </div>
                 </li>

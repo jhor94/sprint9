@@ -2,6 +2,8 @@ import { validationResult } from 'express-validator'
 import Book from '../models/bookModel.js'
 import BooksUsers from '../models/booksUsersModel.js'
 import loadApilibrary from '../services/apiExternal.js'
+import { sequelize } from '../db.js'
+import { where } from 'sequelize'
 
 export const fetchsaveBooks = async(req,res) => {
     const {search, page = 1} = req.query
@@ -152,6 +154,40 @@ export const getBooks = async (req, res)=> {
     }
 }
 
+export const getBookOwnTop = async (req, res) => {
+    try {
+        console.log('Received user_id:', req.params.id);
+        const bookOwn = await BooksUsers.findAll({
+            attributes:[
+                'book_id',
+                [sequelize.fn('COUNT',sequelize.fn('DISTINCT',sequelize.col('user_id'))),'user_count']
+            ],
+                where: {action:'own'},
+                group: 'book_id',
+                order:[[sequelize.literal('user_count'),'DESC']],
+                limit: 5,
+                include: [
+                    {
+                        model: Book, // Relacionamos la tabla BooksUsers con la tabla Book
+                        attributes: ['id_book','external_id_api','title', 'author','isbn','number_of_pages', 'cover','publishers']
+                    },
+                ]
+        })
+        res.status(200).json({
+            code:4,
+            msg:'Detalle del Ownlibro',
+            data: bookOwn
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            code:-120,
+            msg: 'Ha ocurrido un error recoger  los libros own',
+            error: error
+        })
+    }
+}
+
 export const getBookId = async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -272,7 +308,8 @@ export const deleteBook = async (req, res) => {
         console.error(error);
         res.status(500).json({
             code:-100,
-            msg: 'Ha ocurrido un error al eliminar el libro'
+            msg: 'Ha ocurrido un error al eliminar el libro',
+            error: error
         })
     }
 }

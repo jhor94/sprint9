@@ -2,19 +2,21 @@ import { Component, inject } from '@angular/core';
 import { BookService } from '../../../services/books/book.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { Book } from '../../../interfaces/book';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/authservice/auth.service';
 
 
 @Component({
   selector: 'app-result-books',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './result-books.component.html',
   styleUrl: './result-books.component.scss'
 })
 export class ResultBooksComponent {
 
   bookServicio = inject(BookService)
+  accesoService = inject(AuthService)
   BookListSearch: Book[] = []
   searchForm: FormGroup
   imgUrl: string = ''
@@ -25,7 +27,7 @@ export class ResultBooksComponent {
 
   readonly maxPages = 4
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.searchForm = this.fb.group({
       searchQuery: ['']
     })
@@ -34,6 +36,16 @@ export class ResultBooksComponent {
   ngOnInit(): void {
     this.searchBooks()
   }
+
+  isLoggedIn():boolean{
+    return this.accesoService.IsLogin();
+  }
+
+  logOut(){
+    this.accesoService.removeLogin();
+    this.router.navigate([''])
+  }
+
 
   searchBooks(loadMore: boolean = false) {
 

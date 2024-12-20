@@ -6,10 +6,15 @@ import { BookService } from '../../../services/books/book.service';
 import { Book } from '../../../interfaces/book';
 import { BooklistComponent } from "../../booklist/booklist/booklist.component";
 import { WishlistComponent } from "../../wishlist/wishlist/wishlist.component";
+import { WelcomeComponent } from '../../welcomeprofile/welcome/welcome.component';
+import { ListFriendsComponent } from "../../welcomeprofile/friends/list-friends/list-friends.component";
+import { SettingsUserComponent } from "../../welcomeprofile/settings-profile/settings-user/settings-user.component";
+
+
 
 @Component({
   selector: 'app-userprofile',
-  imports: [CommonModule, BooklistComponent, WishlistComponent],
+  imports: [CommonModule, BooklistComponent, WishlistComponent, WelcomeComponent, ListFriendsComponent, SettingsUserComponent],
   templateUrl: './userprofile.component.html',
   styleUrl: './userprofile.component.scss'
 })
@@ -17,8 +22,9 @@ export class UserprofileComponent {
   
   user:any = null;
   userString: string | null =null
-  activeTab: string = 'Lista de Deseos';
+  activeTab: string = 'inicio';
   isSidebarHidden: boolean = true
+  
 
 
   ngOnInit(): void {
@@ -28,7 +34,7 @@ export class UserprofileComponent {
     } else {
       console.error('User not found in localStorage');
     }
-    this.toggleSidebar()
+
   }
 
   tabs = [
@@ -46,7 +52,5 @@ export class UserprofileComponent {
 
   constructor(/*private toastr: ToastrService*/) { }
 
-  toggleSidebar(): void {
-    this.isSidebarHidden = !this.isSidebarHidden;
-  }
+
 }

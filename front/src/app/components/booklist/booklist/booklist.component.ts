@@ -1,10 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BookService } from '../../../services/books/book.service';
 import { Book } from '../../../interfaces/book';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-booklist',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './booklist.component.html',
   styleUrl: './booklist.component.scss'
 })
@@ -13,6 +15,10 @@ export class BooklistComponent  implements OnInit {
   listaUserBook: any[] = []
   userString: string | null = null
   user:any = null;
+
+  isVisible = false
+
+  constructor(private route: Router){}
 ngOnInit(): void {
   this.userString = localStorage.getItem('user')
   if (this.userString) {
@@ -21,6 +27,12 @@ ngOnInit(): void {
     console.error('User not found in localStorage');
   }
   this.getBookListUser()
+}
+
+
+closeModal() {
+  // Al cerrar, se remueve el modal sin cambiar la URL
+  this.route.navigate([{ outlets: { modal: null } }]);
 }
 
 getBookListUser() {
