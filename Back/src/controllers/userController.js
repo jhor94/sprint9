@@ -30,6 +30,42 @@ export const getUsers = async (req, res) => {
     }
 }
 
+ 
+
+export const getuserOwnTop = async (req, res) => {
+    try {
+        console.log('Received user_id:', req.params.id);
+        const bookOwn = await BooksUsers.findAll({
+            attributes:[
+                'book_id',
+                [sequelize.fn('COUNT',sequelize.fn('DISTINCT',sequelize.col('user_id'))),'user_count']
+            ],
+                where: {action:'own'},
+                group: 'user_id',
+                order:[[sequelize.literal('user_count'),'DESC']],
+                limit: 5,
+                include: [
+                    {
+                        model: Book, // Relacionamos la tabla BooksUsers con la tabla Book
+                        attributes: ['id_book','external_id_api','title', 'author','isbn','number_of_pages', 'cover','publishers']
+                    },
+                ]
+        })
+        res.status(200).json({
+            code:4,
+            msg:'Detalle del Ownlibro',
+            data: bookOwn
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            code:-120,
+            msg: 'Ha ocurrido un error recoger  los libros own',
+            error: error
+        })
+    }
+}
+
 export const uploadPhoto = async (req, res) => {
     try {
         console.log("Archivo subido: ", req.file)

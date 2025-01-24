@@ -114,7 +114,6 @@ export const addBook = async (req, res) => {
 
 }
 
-console.log("holaa")
 }
 
 export const getBooks = async (req, res)=> {

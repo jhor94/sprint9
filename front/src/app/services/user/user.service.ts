@@ -18,7 +18,7 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]>{
-    return this.httpCliente.get<{code:number, msg:string, data:User[]}>(`${this.backUrl}${this.apiUrl}`)
+    return this.httpCliente.get<{code:number, msg:string, data:User[]}>(`${this.backUrl}${this.apiUrl}`, {withCredentials:true})
     .pipe(
       map(response => response.data)
     )

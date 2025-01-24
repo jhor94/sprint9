@@ -1,1 +1,16 @@
-<p>list-friends works!</p>
+
+
+<div class="row  d-flex w-100   justify-content-center   mb-4">
+    <h2 class="subtitle d-flex text-center">Mi Biblioteca</h2>
+    @for(user of listusers;track user.id_user){
+    <div class="col-12 col-md-6 col-lg-2  text-center">
+        <div class="card shadow d-flex align-items-center  text-center justify-content-center m-2">
+            <img src="assets/fotoperfil.jpg" class="card-img-top img-fluid" alt="Portada del libro {{ user.name }}">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{ user.name }}</h5>
+                <h5 class="card-title text-truncate">{{ user.email }}</h5>
+            </div>
+        </div>
+    </div>
+    }
+</div>
